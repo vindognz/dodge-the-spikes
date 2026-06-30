@@ -32,10 +32,12 @@ func _ready() -> void:
 
 # Called every frame.
 func _process(delta: float) -> void:
+	if not Global.running: return
+	
 	position.x += SPEED * delta
 	if position.x > screen_width/2:
 		position.x = -screen_width/2
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is CharacterBody2D:
-		print("COLLISION")
+		Global.running = false

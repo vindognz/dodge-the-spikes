@@ -1,19 +1,21 @@
 [gd_scene format=3 uid="uid://d2misia3lhq5r"]
 
+[ext_resource type="Script" uid="uid://d23eduqv4knlu" path="res://scripts/game.gd" id="1_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://bvyjhp7v0x04v" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://uxx4nd6pm7q2" path="res://scenes/spike.tscn" id="2_yqjtg"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6ygxs"]
 
 [node name="Game" type="Node2D" unique_id=989393803]
+script = ExtResource("1_lnu2h")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=714083169]
+[node name="Big bg rect" type="ColorRect" parent="." unique_id=714083169]
 offset_left = -144.0
 offset_top = -162.0
 offset_right = 144.0
 color = Color(2.0696223e-06, 0.5087691, 0.5087693, 1)
 
-[node name="ColorRect2" type="ColorRect" parent="." unique_id=628151695]
+[node name="smaller bg rect" type="ColorRect" parent="." unique_id=628151695]
 offset_left = -144.0
 offset_top = -146.0
 offset_right = 144.0
@@ -27,25 +29,63 @@ position = Vector2(0, -132)
 position = Vector2(0, -81)
 zoom = Vector2(4, 4)
 
-[node name="Floor" type="StaticBody2D" parent="." unique_id=119516899]
+[node name="Spike" parent="." unique_id=1536941388 instance=ExtResource("2_yqjtg")]
+position = Vector2(-64, -32)
+
+[node name="Boundries" type="Node" parent="." unique_id=1883201484]
+
+[node name="Floor" type="StaticBody2D" parent="Boundries" unique_id=119516899]
 position = Vector2(0, -24)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=640408712]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundries/Floor" unique_id=640408712]
 shape = SubResource("WorldBoundaryShape2D_6ygxs")
 
-[node name="Left Wall" type="StaticBody2D" parent="." unique_id=925400220]
+[node name="Left Wall" type="StaticBody2D" parent="Boundries" unique_id=925400220]
 position = Vector2(-128, -24)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Left Wall" unique_id=748030614]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundries/Left Wall" unique_id=748030614]
 rotation = 1.5707964
 shape = SubResource("WorldBoundaryShape2D_6ygxs")
 
-[node name="Right Wall" type="StaticBody2D" parent="." unique_id=1354209041]
+[node name="Right Wall" type="StaticBody2D" parent="Boundries" unique_id=1354209041]
 position = Vector2(128, -24)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Right Wall" unique_id=2146174953]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundries/Right Wall" unique_id=2146174953]
 rotation = -1.5707964
 shape = SubResource("WorldBoundaryShape2D_6ygxs")
 
-[node name="Spike" parent="." unique_id=1536941388 instance=ExtResource("2_yqjtg")]
-position = Vector2(-64, -32)
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=774180784]
+
+[node name="GameOverLabel" type="Label" parent="CanvasLayer" unique_id=1503372036]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -141.5
+offset_top = -11.5
+offset_right = 141.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 64
+text = "Game Over!"
+horizontal_alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer" unique_id=1134715416]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -195.0
+offset_top = 47.0
+offset_right = 196.0
+offset_bottom = 114.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "Your score was X"
+horizontal_alignment = 1
+
+[connection signal="visibility_changed" from="CanvasLayer" to="." method="_on_canvas_layer_visibility_changed"]

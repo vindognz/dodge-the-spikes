@@ -19,6 +19,8 @@ func _draw():
 	draw_style_box(style, Rect2(-8, -8, 16, 16))
 
 func _physics_process(delta: float) -> void:
+	if not Global.running: return
+	
 	# Handle gravity
 	if not is_on_floor():
 		velocity += GRAVITY * delta

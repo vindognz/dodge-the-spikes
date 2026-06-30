@@ -11,8 +11,12 @@ config_version=5
 [application]
 
 config/name="dodge-the-spikes"
-run/main_scene="uid://d2misia3lhq5r"
+run/main_scene="uid://bg5h5hh8q4cqo"
 config/features=PackedStringArray("4.7", "Forward Plus")
+
+[autoload]
+
+Global="*uid://rkw4bv1f34ds"
 
 [display]
 
