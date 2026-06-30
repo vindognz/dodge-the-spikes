@@ -1,3 +1,33 @@
 [gd_scene format=3 uid="uid://d2misia3lhq5r"]
 
-[node name="Node2D" type="Node2D" unique_id=989393803]
+[ext_resource type="PackedScene" uid="uid://bvyjhp7v0x04v" path="res://scenes/player.tscn" id="1_uwrxv"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6ygxs"]
+
+[node name="Game" type="Node2D" unique_id=989393803]
+
+[node name="Player" parent="." unique_id=129299254 instance=ExtResource("1_uwrxv")]
+position = Vector2(2, -96)
+
+[node name="Camera" type="Camera2D" parent="." unique_id=1095580906]
+position = Vector2(0, -108)
+zoom = Vector2(3, 3)
+
+[node name="Floor" type="StaticBody2D" parent="." unique_id=119516899]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=640408712]
+shape = SubResource("WorldBoundaryShape2D_6ygxs")
+
+[node name="Left Wall" type="StaticBody2D" parent="." unique_id=925400220]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Left Wall" unique_id=748030614]
+position = Vector2(-192, 0)
+rotation = 1.5707964
+shape = SubResource("WorldBoundaryShape2D_6ygxs")
+
+[node name="Right Wall" type="StaticBody2D" parent="." unique_id=1354209041]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Right Wall" unique_id=2146174953]
+position = Vector2(192, 0)
+rotation = -1.5707964
+shape = SubResource("WorldBoundaryShape2D_6ygxs")
