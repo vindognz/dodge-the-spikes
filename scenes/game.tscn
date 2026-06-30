@@ -1,13 +1,21 @@
 [gd_scene format=3 uid="uid://d2misia3lhq5r"]
 
 [ext_resource type="PackedScene" uid="uid://bvyjhp7v0x04v" path="res://scenes/player.tscn" id="1_uwrxv"]
+[ext_resource type="PackedScene" uid="uid://uxx4nd6pm7q2" path="res://scenes/spike.tscn" id="2_yqjtg"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6ygxs"]
 
 [node name="Game" type="Node2D" unique_id=989393803]
 
+[node name="Background" type="ColorRect" parent="." unique_id=908827997]
+offset_left = -192.0
+offset_top = -216.0
+offset_right = 192.0
+color = Color(0, 0.7480419, 0.74804187, 1)
+metadata/_edit_use_anchors_ = true
+
 [node name="Player" parent="." unique_id=129299254 instance=ExtResource("1_uwrxv")]
-position = Vector2(2, -96)
+position = Vector2(0, -108)
 
 [node name="Camera" type="Camera2D" parent="." unique_id=1095580906]
 position = Vector2(0, -108)
@@ -31,3 +39,6 @@ shape = SubResource("WorldBoundaryShape2D_6ygxs")
 position = Vector2(192, 0)
 rotation = -1.5707964
 shape = SubResource("WorldBoundaryShape2D_6ygxs")
+
+[node name="Spike" parent="." unique_id=1536941388 instance=ExtResource("2_yqjtg")]
+position = Vector2(-64, -8)
