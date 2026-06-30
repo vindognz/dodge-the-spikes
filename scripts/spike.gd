@@ -1,16 +1,15 @@
 extends Node2D
 
-const SPEED = 100;
+const SPEED = 100
+@onready var camera: Camera2D = get_parent().get_node("Camera")
+var screen_width: float
 
-# Called when the node enters the scene tree for the first time.
+# Called once upon instantiation
 func _ready() -> void:
-	pass # Replace with function body.
+	screen_width = get_viewport_rect().size.x / camera.zoom.x
 
-@onready var camera = get_parent().get_node("Camera")
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+# Called every frame.
 func _process(delta: float) -> void:
-	var screen_width = get_viewport_rect().size.x / camera.zoom.x
 	position.x += SPEED * delta
 	
 	if position.x > screen_width/2:
