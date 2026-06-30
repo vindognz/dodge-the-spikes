@@ -7,38 +7,45 @@
 
 [node name="Game" type="Node2D" unique_id=989393803]
 
-[node name="Background" type="ColorRect" parent="." unique_id=908827997]
-offset_left = -192.0
-offset_top = -216.0
-offset_right = 192.0
-color = Color(0, 0.7480419, 0.74804187, 1)
-metadata/_edit_use_anchors_ = true
+[node name="ColorRect" type="ColorRect" parent="." unique_id=714083169]
+offset_left = -144.0
+offset_top = -162.0
+offset_right = 144.0
+color = Color(2.0696223e-06, 0.5087691, 0.5087693, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=628151695]
+offset_left = -144.0
+offset_top = -146.0
+offset_right = 144.0
+offset_bottom = -24.0
+color = Color(0, 0.678862, 0.67886186, 1)
 
 [node name="Player" parent="." unique_id=129299254 instance=ExtResource("1_uwrxv")]
-position = Vector2(0, -108)
+position = Vector2(0, -132)
 
 [node name="Camera" type="Camera2D" parent="." unique_id=1095580906]
-position = Vector2(0, -108)
-zoom = Vector2(3, 3)
+position = Vector2(0, -81)
+zoom = Vector2(4, 4)
 
 [node name="Floor" type="StaticBody2D" parent="." unique_id=119516899]
+position = Vector2(0, -24)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=640408712]
 shape = SubResource("WorldBoundaryShape2D_6ygxs")
 
 [node name="Left Wall" type="StaticBody2D" parent="." unique_id=925400220]
+position = Vector2(-128, -24)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Left Wall" unique_id=748030614]
-position = Vector2(-192, 0)
 rotation = 1.5707964
 shape = SubResource("WorldBoundaryShape2D_6ygxs")
 
 [node name="Right Wall" type="StaticBody2D" parent="." unique_id=1354209041]
+position = Vector2(128, -24)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Right Wall" unique_id=2146174953]
-position = Vector2(192, 0)
 rotation = -1.5707964
 shape = SubResource("WorldBoundaryShape2D_6ygxs")
 
 [node name="Spike" parent="." unique_id=1536941388 instance=ExtResource("2_yqjtg")]
-position = Vector2(-64, -8)
+position = Vector2(-64, -32)
