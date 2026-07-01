@@ -20,7 +20,21 @@ offset_left = -144.0
 offset_top = -146.0
 offset_right = 144.0
 offset_bottom = -24.0
-color = Color(0, 0.678862, 0.67886186, 1)
+color = Color(0, 0.62884855, 0.62884855, 1)
+
+[node name="little line" type="ColorRect" parent="." unique_id=1051180067]
+offset_left = -144.0
+offset_top = -146.0
+offset_right = -128.0
+offset_bottom = -40.0
+color = Color(2.0696223e-06, 0.5087691, 0.5087693, 1)
+
+[node name="little line2" type="ColorRect" parent="." unique_id=1399323657]
+offset_left = 128.0
+offset_top = -146.0
+offset_right = 144.0
+offset_bottom = -40.0
+color = Color(2.0696223e-06, 0.5087691, 0.5087693, 1)
 
 [node name="Player" parent="." unique_id=129299254 instance=ExtResource("1_uwrxv")]
 position = Vector2(0, -132)
@@ -56,36 +70,97 @@ shape = SubResource("WorldBoundaryShape2D_6ygxs")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=774180784]
 
-[node name="GameOverLabel" type="Label" parent="CanvasLayer" unique_id=1503372036]
+[node name="UI references" type="Node2D" parent="CanvasLayer" unique_id=898998770]
+
+[node name="Big bg rect2" type="ColorRect" parent="CanvasLayer/UI references" unique_id=499443542]
+offset_right = 1152.0
+offset_bottom = 64.0
+color = Color(0.8039216, 0, 0.41960785, 1)
+
+[node name="Big bg rect3" type="ColorRect" parent="CanvasLayer/UI references" unique_id=571146118]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_top = 552.0
+offset_right = 1152.0
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.8039216, 0, 0.41960785, 1)
+
+[node name="GameOverScreen" type="Node2D" parent="CanvasLayer" unique_id=1441366816]
+
+[node name="GameOverLabel" type="Label" parent="CanvasLayer/GameOverScreen" unique_id=1503372036]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -141.5
-offset_top = -11.5
-offset_right = 141.5
-offset_bottom = 11.5
+offset_left = 394.0
+offset_top = 210.0
+offset_right = 759.0
+offset_bottom = 298.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 64
 text = "Game Over!"
 horizontal_alignment = 1
 
-[node name="ScoreLabel" type="Label" parent="CanvasLayer" unique_id=1134715416]
+[node name="ScoreLabel" type="Label" parent="CanvasLayer/GameOverScreen" unique_id=1134715416]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -195.0
-offset_top = 47.0
-offset_right = 196.0
-offset_bottom = 114.0
+offset_left = 380.5
+offset_top = 290.5
+offset_right = 771.5
+offset_bottom = 357.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 48
-text = "Your score was X"
+text = "Your score was 0"
 horizontal_alignment = 1
 
-[connection signal="visibility_changed" from="CanvasLayer" to="." method="_on_canvas_layer_visibility_changed"]
+[node name="PlayAgainButton" type="Button" parent="CanvasLayer/GameOverScreen" unique_id=1294990620]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 489.0
+offset_top = 370.0
+offset_right = 669.0
+offset_bottom = 430.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "Play Again"
+
+[node name="HUD" type="Node2D" parent="CanvasLayer" unique_id=1080260442]
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer/HUD" unique_id=454359975]
+offset_left = 16.0
+offset_top = -2.0
+offset_right = 197.0
+offset_bottom = 65.0
+theme_override_font_sizes/font_size = 48
+text = "Score: 0"
+
+[node name="QuitButton" type="Button" parent="CanvasLayer/HUD" unique_id=1558672291]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 1096.0
+offset_top = 8.0
+offset_right = 1144.0
+offset_bottom = 56.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 28
+text = "❌"
+
+[connection signal="pressed" from="CanvasLayer/GameOverScreen/PlayAgainButton" to="." method="_on_play_again_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/HUD/QuitButton" to="." method="_on_quit_button_pressed"]

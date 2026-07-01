@@ -2,10 +2,11 @@ extends Node2D
 
 const SPEED = 100
 @onready var camera: Camera2D = get_parent().get_node("Camera")
-@onready var collision_main: CollisionPolygon2D = $Area2D/CollisionPolygon2D
-@onready var collision_secondary: CollisionPolygon2D = $Area2D/CollisionPolygon2D2
+@onready var collision_main: CollisionPolygon2D = $SpikeCol/CollisionPolygon2D
+@onready var collision_secondary: CollisionPolygon2D = $SpikeCol/CollisionPolygon2D2
 
 var screen_width: float
+var scored: bool = false
 
 var main_points = PackedVector2Array([
 	Vector2(-8, 8),
@@ -35,7 +36,15 @@ func _process(delta: float) -> void:
 	if not Global.running: return
 	
 	position.x += SPEED * delta
+	
+	if not scored:
+		var player = get_parent().get_node("Player")
+		if position.x > player.position.x:
+			scored = true
+			Global.score += 1
+	
 	if position.x > screen_width/2:
+		scored = false
 		position.x = -screen_width/2
 
 func _on_area_2d_body_entered(body: Node2D) -> void:

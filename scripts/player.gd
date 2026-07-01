@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
 const SPEED = 80.0
-const JUMP_VELOCITY = 350.0
-const GRAVITY = Vector2(0, 1200) #Vector2(0, 980.0)
+const JUMP_VELOCITY = 400.0
+const GRAVITY = Vector2(0, 1400) #Vector2(0, 980.0)
 
 func _draw():
 	var style = StyleBoxFlat.new()

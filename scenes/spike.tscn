@@ -5,10 +5,10 @@
 [node name="Spike" type="Node2D" unique_id=1536941388]
 script = ExtResource("1_7a7y0")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1327343234]
+[node name="SpikeCol" type="Area2D" parent="." unique_id=1327343234]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" unique_id=154330122]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SpikeCol" unique_id=154330122]
 
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Area2D" unique_id=1217518545]
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="SpikeCol" unique_id=1217518545]
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="SpikeCol" to="." method="_on_area_2d_body_entered"]
