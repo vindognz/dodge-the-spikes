@@ -11,4 +11,11 @@ script = ExtResource("1_7a7y0")
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="SpikeCol" unique_id=1217518545]
 
+[node name="ColorRect" type="ColorRect" parent="." unique_id=602179649]
+visible = false
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+
 [connection signal="body_entered" from="SpikeCol" to="." method="_on_area_2d_body_entered"]

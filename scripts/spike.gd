@@ -1,19 +1,19 @@
 extends Node2D
 
 const SPEED = 100
-@onready var camera: Camera2D = get_parent().get_node("Camera")
 @onready var collision_main: CollisionPolygon2D = $SpikeCol/CollisionPolygon2D
 @onready var collision_secondary: CollisionPolygon2D = $SpikeCol/CollisionPolygon2D2
+@export var moves: bool = true
 
-var screen_width: float
 var scored: bool = false
+var direction: int = 1
+var half_width: float = 0.0
 
 var main_points = PackedVector2Array([
 	Vector2(-8, 8),
 	Vector2(2, 8),
 	Vector2(-3, -8)
 ])
-
 var secondary_points = PackedVector2Array([
 	Vector2(0, 8),
 	Vector2(8, 8),
@@ -24,28 +24,32 @@ func _draw():
 	var color = Color(0.9, 0.1, 0.2)
 	draw_polygon(main_points, PackedColorArray([color]))
 	draw_polygon(secondary_points, PackedColorArray([color]))
-	
-# Called once upon instantiation
+
 func _ready() -> void:
-	screen_width = get_viewport_rect().size.x / camera.zoom.x
 	collision_main.polygon = main_points
 	collision_secondary.polygon = secondary_points
 
-# Called every frame.
 func _process(delta: float) -> void:
 	if not Global.running: return
+	if not moves: return
 	
-	position.x += SPEED * delta
+	var current_speed = (SPEED + Global.score * 2) * direction
+	position.x += current_speed * delta
 	
 	if not scored:
 		var player = get_parent().get_node("Player")
-		if position.x > player.position.x:
+		if direction == 1 and position.x > player.position.x:
+			scored = true
+			Global.score += 1
+		elif direction == -1 and position.x < player.position.x:
 			scored = true
 			Global.score += 1
 	
-	if position.x > screen_width/2:
-		scored = false
-		position.x = -screen_width/2
+	# despawn off the far edge
+	if half_width > 0:
+		if position.x > half_width + 20 or position.x < -half_width - 20:
+			print("Spike: I am abt to die")
+			queue_free()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is CharacterBody2D:

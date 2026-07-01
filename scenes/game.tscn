@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://d23eduqv4knlu" path="res://scripts/game.gd" id="1_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://bvyjhp7v0x04v" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://uxx4nd6pm7q2" path="res://scenes/spike.tscn" id="2_yqjtg"]
+[ext_resource type="Script" uid="uid://beo50xf5lvt7u" path="res://scripts/spike_controller.gd" id="4_lbhrr"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6ygxs"]
 
@@ -43,8 +44,9 @@ position = Vector2(0, -132)
 position = Vector2(0, -81)
 zoom = Vector2(4, 4)
 
-[node name="Spike" parent="." unique_id=1536941388 instance=ExtResource("2_yqjtg")]
-position = Vector2(-64, -32)
+[node name="SpikeController" type="Node2D" parent="." unique_id=68066691]
+script = ExtResource("4_lbhrr")
+spike_scene = ExtResource("2_yqjtg")
 
 [node name="Boundries" type="Node" parent="." unique_id=1883201484]
 
