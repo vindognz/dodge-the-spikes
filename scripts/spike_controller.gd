@@ -26,7 +26,7 @@ func pick_side() -> String:
 		same_side_count += 1
 	else:
 		same_side_count = 0
-	if max_same_side >= 3:
+	if same_side_count >= max_same_side:
 		side = "right" if last_side == "left" else "left"
 		same_side_count = 0
 	last_side = side

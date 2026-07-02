@@ -24,7 +24,8 @@ offset_bottom = -24.0
 color = Color(0, 0.62884855, 0.62884855, 1)
 
 [node name="Player" parent="." unique_id=129299254 instance=ExtResource("1_uwrxv")]
-position = Vector2(0, -132)
+z_index = 1
+position = Vector2(0, -162)
 
 [node name="Camera" type="Camera2D" parent="." unique_id=1095580906]
 position = Vector2(0, -81)
@@ -44,14 +45,14 @@ shape = SubResource("WorldBoundaryShape2D_6ygxs")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=774180784]
 
-[node name="UI references" type="Node2D" parent="CanvasLayer" unique_id=898998770]
+[node name="UI borders" type="Node2D" parent="CanvasLayer" unique_id=898998770]
 
-[node name="Big bg rect2" type="ColorRect" parent="CanvasLayer/UI references" unique_id=499443542]
+[node name="Top" type="ColorRect" parent="CanvasLayer/UI borders" unique_id=499443542]
 offset_right = 1152.0
 offset_bottom = 64.0
-color = Color(0.8039216, 0, 0.41960785, 1)
+color = Color(0, 0.50980395, 0.50980395, 1)
 
-[node name="Big bg rect3" type="ColorRect" parent="CanvasLayer/UI references" unique_id=571146118]
+[node name="Bottom" type="ColorRect" parent="CanvasLayer/UI borders" unique_id=571146118]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -62,7 +63,7 @@ offset_right = 1152.0
 offset_bottom = 648.0
 grow_horizontal = 2
 grow_vertical = 0
-color = Color(0.8039216, 0, 0.41960785, 1)
+color = Color(0, 0.50980395, 0.50980395, 1)
 
 [node name="GameOverScreen" type="Node2D" parent="CanvasLayer" unique_id=1441366816]
 
