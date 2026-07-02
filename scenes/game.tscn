@@ -23,20 +23,6 @@ offset_right = 144.0
 offset_bottom = -24.0
 color = Color(0, 0.62884855, 0.62884855, 1)
 
-[node name="little line" type="ColorRect" parent="." unique_id=1051180067]
-offset_left = -144.0
-offset_top = -146.0
-offset_right = -128.0
-offset_bottom = -40.0
-color = Color(2.0696223e-06, 0.5087691, 0.5087693, 1)
-
-[node name="little line2" type="ColorRect" parent="." unique_id=1399323657]
-offset_left = 128.0
-offset_top = -146.0
-offset_right = 144.0
-offset_bottom = -40.0
-color = Color(2.0696223e-06, 0.5087691, 0.5087693, 1)
-
 [node name="Player" parent="." unique_id=129299254 instance=ExtResource("1_uwrxv")]
 position = Vector2(0, -132)
 
@@ -54,20 +40,6 @@ spike_scene = ExtResource("2_yqjtg")
 position = Vector2(0, -24)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boundries/Floor" unique_id=640408712]
-shape = SubResource("WorldBoundaryShape2D_6ygxs")
-
-[node name="Left Wall" type="StaticBody2D" parent="Boundries" unique_id=925400220]
-position = Vector2(-128, -24)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundries/Left Wall" unique_id=748030614]
-rotation = 1.5707964
-shape = SubResource("WorldBoundaryShape2D_6ygxs")
-
-[node name="Right Wall" type="StaticBody2D" parent="Boundries" unique_id=1354209041]
-position = Vector2(128, -24)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundries/Right Wall" unique_id=2146174953]
-rotation = -1.5707964
 shape = SubResource("WorldBoundaryShape2D_6ygxs")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=774180784]
@@ -163,6 +135,80 @@ offset_bottom = 56.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 28
 text = "❌"
+
+[node name="SpikeWall" type="Node2D" parent="." unique_id=153987023]
+
+[node name="Spike" parent="SpikeWall" unique_id=1536941388 instance=ExtResource("2_yqjtg")]
+position = Vector2(-136, -48)
+rotation = 1.5707964
+moves = false
+
+[node name="Spike2" parent="SpikeWall" unique_id=1044662672 instance=ExtResource("2_yqjtg")]
+position = Vector2(-136, -64)
+rotation = 1.5707964
+moves = false
+
+[node name="Spike3" parent="SpikeWall" unique_id=325643245 instance=ExtResource("2_yqjtg")]
+position = Vector2(-136, -80)
+rotation = 1.5707964
+moves = false
+
+[node name="Spike4" parent="SpikeWall" unique_id=149768711 instance=ExtResource("2_yqjtg")]
+position = Vector2(-136, -96)
+rotation = 1.5707964
+moves = false
+
+[node name="Spike5" parent="SpikeWall" unique_id=658750687 instance=ExtResource("2_yqjtg")]
+position = Vector2(-136, -112)
+rotation = 1.5707964
+moves = false
+
+[node name="Spike6" parent="SpikeWall" unique_id=1256434832 instance=ExtResource("2_yqjtg")]
+position = Vector2(-136, -128)
+rotation = 1.5707964
+moves = false
+
+[node name="Spike7" parent="SpikeWall" unique_id=2134572725 instance=ExtResource("2_yqjtg")]
+position = Vector2(-136, -144)
+rotation = 1.5707964
+moves = false
+
+[node name="SpikeWall2" type="Node2D" parent="." unique_id=1690672608]
+
+[node name="Spike8" parent="SpikeWall2" unique_id=1349900746 instance=ExtResource("2_yqjtg")]
+position = Vector2(136, -48)
+rotation = -1.5707964
+moves = false
+
+[node name="Spike9" parent="SpikeWall2" unique_id=1303028636 instance=ExtResource("2_yqjtg")]
+position = Vector2(136, -64)
+rotation = -1.5707964
+moves = false
+
+[node name="Spike10" parent="SpikeWall2" unique_id=495804630 instance=ExtResource("2_yqjtg")]
+position = Vector2(136, -80)
+rotation = -1.5707964
+moves = false
+
+[node name="Spike11" parent="SpikeWall2" unique_id=1919276485 instance=ExtResource("2_yqjtg")]
+position = Vector2(136, -96)
+rotation = -1.5707964
+moves = false
+
+[node name="Spike12" parent="SpikeWall2" unique_id=1058786449 instance=ExtResource("2_yqjtg")]
+position = Vector2(136, -112)
+rotation = -1.5707964
+moves = false
+
+[node name="Spike13" parent="SpikeWall2" unique_id=1470803566 instance=ExtResource("2_yqjtg")]
+position = Vector2(136, -128)
+rotation = -1.5707964
+moves = false
+
+[node name="Spike14" parent="SpikeWall2" unique_id=1540688536 instance=ExtResource("2_yqjtg")]
+position = Vector2(136, -144)
+rotation = -1.5707964
+moves = false
 
 [connection signal="pressed" from="CanvasLayer/GameOverScreen/PlayAgainButton" to="." method="_on_play_again_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/HUD/QuitButton" to="." method="_on_quit_button_pressed"]

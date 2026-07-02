@@ -48,7 +48,6 @@ func _process(delta: float) -> void:
 	# despawn off the far edge
 	if half_width > 0:
 		if position.x > half_width + 20 or position.x < -half_width - 20:
-			print("Spike: I am abt to die")
 			queue_free()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:

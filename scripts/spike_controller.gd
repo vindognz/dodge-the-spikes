@@ -12,8 +12,6 @@ var max_same_side: int = 3
 
 func _ready() -> void:
 	screen_width = get_viewport_rect().size.x / camera.zoom.x
-	
-	print("half_width: ", screen_width/2)
 
 func _process(delta: float) -> void:
 	if not Global.running: return
@@ -39,12 +37,12 @@ func spawn_spike() -> void:
 	var side = pick_side()
 	var half = screen_width / 2
 	
-	print("spawning ", side)
-	
 	if side == "left":
 		spike.position = Vector2(-half - 8, -32)  # -144 - 8 = -152
 		spike.direction = 1
 	else:
 		spike.position = Vector2(half + 8, -32)   # 144 + 8 = 152
 		spike.direction = -1
+	
+	spike.half_width = half
 	get_parent().add_child(spike)
