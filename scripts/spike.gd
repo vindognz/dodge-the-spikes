@@ -14,6 +14,7 @@ var main_points = PackedVector2Array([
 	Vector2(2, 8),
 	Vector2(-3, -8)
 ])
+
 var secondary_points = PackedVector2Array([
 	Vector2(0, 8),
 	Vector2(8, 8),

@@ -14,14 +14,14 @@ script = ExtResource("1_lnu2h")
 offset_left = -144.0
 offset_top = -162.0
 offset_right = 144.0
-color = Color(2.0696223e-06, 0.5087691, 0.5087693, 1)
+color = Color(0, 0, 0, 1)
 
 [node name="smaller bg rect" type="ColorRect" parent="." unique_id=628151695]
 offset_left = -144.0
-offset_top = -146.0
+offset_top = -162.0
 offset_right = 144.0
 offset_bottom = -24.0
-color = Color(0, 0.62884855, 0.62884855, 1)
+color = Color(0.08468992, 0.08468992, 0.08468992, 1)
 
 [node name="Player" parent="." unique_id=129299254 instance=ExtResource("1_uwrxv")]
 z_index = 1
@@ -78,40 +78,50 @@ position = Vector2(-136, -144)
 rotation = 1.5707964
 moves = false
 
+[node name="Spike8" parent="SpikeWall" unique_id=467784018 instance=ExtResource("2_yqjtg")]
+position = Vector2(-136, -160)
+rotation = 1.5707964
+moves = false
+
 [node name="SpikeWall2" type="Node2D" parent="." unique_id=1690672608]
 
-[node name="Spike8" parent="SpikeWall2" unique_id=1349900746 instance=ExtResource("2_yqjtg")]
+[node name="Spike9" parent="SpikeWall2" unique_id=1349900746 instance=ExtResource("2_yqjtg")]
 position = Vector2(136, -48)
 rotation = -1.5707964
 moves = false
 
-[node name="Spike9" parent="SpikeWall2" unique_id=1303028636 instance=ExtResource("2_yqjtg")]
+[node name="Spike10" parent="SpikeWall2" unique_id=228655506 instance=ExtResource("2_yqjtg")]
 position = Vector2(136, -64)
 rotation = -1.5707964
 moves = false
 
-[node name="Spike10" parent="SpikeWall2" unique_id=495804630 instance=ExtResource("2_yqjtg")]
+[node name="Spike11" parent="SpikeWall2" unique_id=1276949757 instance=ExtResource("2_yqjtg")]
 position = Vector2(136, -80)
 rotation = -1.5707964
 moves = false
 
-[node name="Spike11" parent="SpikeWall2" unique_id=1919276485 instance=ExtResource("2_yqjtg")]
+[node name="Spike12" parent="SpikeWall2" unique_id=544029738 instance=ExtResource("2_yqjtg")]
 position = Vector2(136, -96)
 rotation = -1.5707964
 moves = false
 
-[node name="Spike12" parent="SpikeWall2" unique_id=1058786449 instance=ExtResource("2_yqjtg")]
+[node name="Spike13" parent="SpikeWall2" unique_id=57802351 instance=ExtResource("2_yqjtg")]
 position = Vector2(136, -112)
 rotation = -1.5707964
 moves = false
 
-[node name="Spike13" parent="SpikeWall2" unique_id=1470803566 instance=ExtResource("2_yqjtg")]
+[node name="Spike14" parent="SpikeWall2" unique_id=2069996513 instance=ExtResource("2_yqjtg")]
 position = Vector2(136, -128)
 rotation = -1.5707964
 moves = false
 
-[node name="Spike14" parent="SpikeWall2" unique_id=1540688536 instance=ExtResource("2_yqjtg")]
+[node name="Spike15" parent="SpikeWall2" unique_id=920987267 instance=ExtResource("2_yqjtg")]
 position = Vector2(136, -144)
+rotation = -1.5707964
+moves = false
+
+[node name="Spike16" parent="SpikeWall2" unique_id=331982769 instance=ExtResource("2_yqjtg")]
+position = Vector2(136, -160)
 rotation = -1.5707964
 moves = false
 
@@ -120,9 +130,10 @@ moves = false
 [node name="UI borders" type="Node2D" parent="CanvasLayer" unique_id=898998770]
 
 [node name="Top" type="ColorRect" parent="CanvasLayer/UI borders" unique_id=499443542]
+visible = false
 offset_right = 1152.0
 offset_bottom = 64.0
-color = Color(0, 0.50980395, 0.50980395, 1)
+color = Color(0, 0, 0, 1)
 
 [node name="Bottom" type="ColorRect" parent="CanvasLayer/UI borders" unique_id=571146118]
 anchors_preset = 7
@@ -135,7 +146,7 @@ offset_right = 1152.0
 offset_bottom = 648.0
 grow_horizontal = 2
 grow_vertical = 0
-color = Color(0, 0.50980395, 0.50980395, 1)
+color = Color(0, 0, 0, 1)
 
 [node name="GameOverScreen" type="Node2D" parent="CanvasLayer" unique_id=1441366816]
 
@@ -190,9 +201,9 @@ text = "Play Again"
 [node name="HUD" type="Node2D" parent="CanvasLayer" unique_id=1080260442]
 
 [node name="ScoreLabel" type="Label" parent="CanvasLayer/HUD" unique_id=454359975]
-offset_left = 16.0
+offset_left = 80.0
 offset_top = -2.0
-offset_right = 197.0
+offset_right = 261.0
 offset_bottom = 65.0
 theme_override_font_sizes/font_size = 48
 text = "Score: 0"

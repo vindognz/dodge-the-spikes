@@ -10,6 +10,7 @@ script = ExtResource("1_7a7y0")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SpikeCol" unique_id=154330122]
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="SpikeCol" unique_id=1217518545]
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=602179649]
 visible = false
