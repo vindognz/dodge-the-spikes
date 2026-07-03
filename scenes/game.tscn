@@ -14,14 +14,14 @@ script = ExtResource("1_lnu2h")
 offset_left = -144.0
 offset_top = -162.0
 offset_right = 144.0
-color = Color(0, 0, 0, 1)
+color = Color(0.08468992, 0.08468992, 0.08468992, 1)
 
 [node name="smaller bg rect" type="ColorRect" parent="." unique_id=628151695]
 offset_left = -144.0
 offset_top = -162.0
 offset_right = 144.0
 offset_bottom = -24.0
-color = Color(0.08468992, 0.08468992, 0.08468992, 1)
+color = Color(0.099985994, 0.099985994, 0.099985994, 1)
 
 [node name="Player" parent="." unique_id=129299254 instance=ExtResource("1_uwrxv")]
 z_index = 1
@@ -146,7 +146,7 @@ offset_right = 1152.0
 offset_bottom = 648.0
 grow_horizontal = 2
 grow_vertical = 0
-color = Color(0, 0, 0, 1)
+color = Color(0.08627451, 0.08627451, 0.08627451, 1)
 
 [node name="GameOverScreen" type="Node2D" parent="CanvasLayer" unique_id=1441366816]
 
@@ -198,27 +198,26 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 32
 text = "Play Again"
 
+[node name="SubmitScoreButton" type="Button" parent="CanvasLayer/GameOverScreen" unique_id=1648888760]
+offset_left = 298.0
+offset_top = 390.0
+offset_right = 407.0
+offset_bottom = 421.0
+text = "Submit score"
+
 [node name="HUD" type="Node2D" parent="CanvasLayer" unique_id=1080260442]
 
 [node name="ScoreLabel" type="Label" parent="CanvasLayer/HUD" unique_id=454359975]
-offset_left = 80.0
-offset_top = -2.0
-offset_right = 261.0
-offset_bottom = 65.0
-theme_override_font_sizes/font_size = 48
-text = "Score: 0"
-
-[node name="HighScoreLabel" type="Label" parent="CanvasLayer/HUD" unique_id=103227688]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 16.0
 offset_top = 565.0
-offset_right = 301.0
+offset_right = 197.0
 offset_bottom = 632.0
 grow_vertical = 0
 theme_override_font_sizes/font_size = 48
-text = "Highscore: 0"
+text = "Score: 0"
 
 [node name="QuitButton" type="Button" parent="CanvasLayer/HUD" unique_id=1558672291]
 anchors_preset = 1
@@ -232,5 +231,22 @@ grow_horizontal = 0
 theme_override_font_sizes/font_size = 28
 text = "❌"
 
+[node name="LeaderboardButton" type="Button" parent="CanvasLayer/HUD" unique_id=476615647]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1080.0
+offset_top = 576.0
+offset_right = 1128.0
+offset_bottom = 624.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 28
+text = "🏆"
+
 [connection signal="pressed" from="CanvasLayer/GameOverScreen/PlayAgainButton" to="." method="_on_play_again_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/GameOverScreen/SubmitScoreButton" to="." method="_on_submit_score_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/HUD/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/HUD/LeaderboardButton" to="." method="_on_leaderboard_button_pressed"]
