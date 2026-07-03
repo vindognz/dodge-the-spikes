@@ -14,6 +14,7 @@ Spikes fly at you from both sides of the screen. Jump over them. Don't get hit.
 - Spikes spawning from random sides
 - Speed scales with score - the longer you survive, the harder it gets
 - Highscore tracking
+- Global leaderboard
 - Game over screen
 
 ## Play

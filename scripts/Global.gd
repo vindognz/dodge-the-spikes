@@ -35,21 +35,20 @@ func submit_score(player_name: String) -> void:
 		http.queue_free()
 	)
 
-func fetch_leaderboard() -> void:
+func fetch_leaderboard(callback: Callable) -> void:
 	var http = HTTPRequest.new()
 	get_tree().root.add_child(http)
 	
-	var url = SUPABASE_URL + "/rest/v1/leaderboard?select=name,score&order=score.desc&limit=10"
+	var url = SUPABASE_URL + "/rest/v1/rpc/get_leaderboard"
 	var headers = [
 		"apikey: " + SUPABASE_KEY,
 		"Authorization: Bearer " + SUPABASE_KEY
 	]
-	
 	http.request(url, headers, HTTPClient.METHOD_GET)
 	http.request_completed.connect(func(result, code, _headers, body):
 		if code == 200:
 			var json = JSON.parse_string(body.get_string_from_utf8())
-			print("Leaderboard: ", json)
+			callback.call(json)
 		else:
 			print("Fetch failed: ", code)
 		http.queue_free()

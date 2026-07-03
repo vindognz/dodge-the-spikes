@@ -223,12 +223,12 @@ text = "Score: 0"
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = 1096.0
+offset_left = 1080.0
 offset_top = 8.0
 offset_right = 1144.0
-offset_bottom = 56.0
+offset_bottom = 72.0
 grow_horizontal = 0
-theme_override_font_sizes/font_size = 28
+theme_override_font_sizes/font_size = 40
 text = "❌"
 
 [node name="LeaderboardButton" type="Button" parent="CanvasLayer/HUD" unique_id=476615647]

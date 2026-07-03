@@ -28,4 +28,4 @@ func _on_submit_score_button_pressed() -> void:
 	Global.submit_score("test")
 
 func _on_leaderboard_button_pressed() -> void:
-	Global.fetch_leaderboard()
+	get_tree().change_scene_to_file("res://scenes/leaderboard.tscn")
