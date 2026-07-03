@@ -21,9 +21,22 @@ var secondary_points = PackedVector2Array([
 ])
 
 func _draw():
-	var color = Color(0.9, 0.1, 0.2)
-	draw_polygon(main_points, PackedColorArray([color]))
-	draw_polygon(secondary_points, PackedColorArray([color]))
+	var tip_color = Color(1.0, 0.25, 0.35)      # bright red
+	var base_color = Color(0.36, 0.05, 0.1)     # dark near-black red
+
+	# main spike — tip is index 2 (Vector2(-3, -8)), base is 0 and 1
+	draw_polygon(main_points, PackedColorArray([
+		base_color,
+		base_color,
+		tip_color
+	]))
+
+	# secondary spike — tip is index 2 (Vector2(4, -3)), base is 0 and 1
+	draw_polygon(secondary_points, PackedColorArray([
+		base_color,
+		base_color,
+		tip_color
+	]))
 
 func _ready() -> void:
 	collision_main.polygon = main_points

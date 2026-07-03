@@ -3,6 +3,7 @@ extends Node2D
 @onready var game_over_screen: Node2D = $CanvasLayer/GameOverScreen
 @onready var game_over_score_label: Label = $CanvasLayer/GameOverScreen/ScoreLabel
 @onready var score_label: Label = $CanvasLayer/HUD/ScoreLabel
+@onready var high_score_label: Label = $CanvasLayer/HUD/HighScoreLabel
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -16,6 +17,7 @@ func _process(delta: float) -> void:
 	else:
 		score_label.text = "Score: " + str(Global.score)
 		Global.highscore = max(Global.score, Global.highscore)
+		high_score_label.text = "Highscore: " + str(Global.highscore)
 
 func _on_play_again_button_pressed() -> void:
 	get_tree().reload_current_scene()
