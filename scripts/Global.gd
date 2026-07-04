@@ -27,7 +27,7 @@ func submit_score(player_name: String) -> void:
 	})
 	
 	http.request(url, headers, HTTPClient.METHOD_POST, body)
-	http.request_completed.connect(func(result, code, _headers, _body):
+	http.request_completed.connect(func(_result, code, _headers, _body):
 		if code == 201:
 			print("Score submitted!")
 		else:
@@ -45,7 +45,7 @@ func fetch_leaderboard(callback: Callable) -> void:
 		"Authorization: Bearer " + SUPABASE_KEY
 	]
 	http.request(url, headers, HTTPClient.METHOD_GET)
-	http.request_completed.connect(func(result, code, _headers, body):
+	http.request_completed.connect(func(_result, code, _headers, body):
 		if code == 200:
 			var json = JSON.parse_string(body.get_string_from_utf8())
 			callback.call(json)

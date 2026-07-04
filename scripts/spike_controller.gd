@@ -17,8 +17,9 @@ func _process(delta: float) -> void:
 	if not Global.running: return
 	timer += delta
 	if timer >= cooldown:
-		timer = 0.0
-		spawn_spike()
+		if randf() < 0.3:
+			timer = 0.0
+			spawn_spike()
 
 func pick_side() -> String:
 	var side = "left" if randf() < 0.5 else "right"

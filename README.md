@@ -25,3 +25,10 @@ Builds for Linux, Windows and Mac are available on the [releases page](https://g
 
 ## Built with
 - [Godot 4.7](https://godotengine.org)
+
+## todo based on playtesting
+- death burst effect thing
+- 180 degree rotation upon jump
+- start screen
+- fix the gameover ui layout lmao
+- fireflies type background

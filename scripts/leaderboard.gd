@@ -14,14 +14,6 @@ func _ready() -> void:
 	loading_label.text = "Loading"
 	Global.fetch_leaderboard(populate)
 
-func _process2(delta: float) -> void:
-	if loading_label.visible:
-		loading_timer += delta
-		if loading_timer >= 1.0:
-			loading_timer = 0.0
-			loading_dots = (loading_dots + 1) % 4
-			loading_label.text = "Loading" + ".".repeat(loading_dots)
-
 func _process(delta: float) -> void:
 	if loading_label.visible:
 		loading_timer += delta

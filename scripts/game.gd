@@ -3,13 +3,14 @@ extends Node2D
 @onready var game_over_screen: Node2D = $CanvasLayer/GameOverScreen
 @onready var game_over_score_label: Label = $CanvasLayer/GameOverScreen/ScoreLabel
 @onready var score_label: Label = $CanvasLayer/HUD/ScoreLabel
+@onready var player: CharacterBody2D = $Player
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	game_over_screen.visible = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if not Global.running:
 		game_over_screen.visible = true
 		game_over_score_label.text = "Your score was " + str(Global.score)
