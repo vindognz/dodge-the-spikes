@@ -4,7 +4,8 @@ extends Node2D
 @onready var camera: Camera2D = get_parent().get_node("Camera")
 
 var screen_width: float
-var cooldown: float = 1.5
+var min_cooldown: float = 0.75
+var base_cooldown: float = 1.5
 var timer: float = 0.0
 var last_side: String = ""
 var same_side_count: int = 0
@@ -16,10 +17,13 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if not Global.running: return
 	timer += delta
-	if timer >= cooldown:
+	if timer >= get_cooldown():
 		if randf() < 0.3:
 			timer = 0.0
 			spawn_spike()
+
+func get_cooldown() -> float:
+	return max(min_cooldown, base_cooldown - Global.score * 0.02)
 
 func pick_side() -> String:
 	var side = "left" if randf() < 0.5 else "right"
