@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://crubhan1q7km4"]
+
+[ext_resource type="Script" uid="uid://cjhnnii5sirop" path="res://scripts/firefly.gd" id="1_k4n6k"]
+
+[node name="Firefly" type="Node2D" unique_id=1993223374]
+z_index = -1
+script = ExtResource("1_k4n6k")
