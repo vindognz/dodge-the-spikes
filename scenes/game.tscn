@@ -4,10 +4,12 @@
 [ext_resource type="PackedScene" uid="uid://bvyjhp7v0x04v" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="Shader" uid="uid://du1y2b5vp0oos" path="res://shaders/fireflies_bg.gdshader" id="2_iywne"]
 [ext_resource type="PackedScene" uid="uid://uxx4nd6pm7q2" path="res://scenes/spike.tscn" id="2_yqjtg"]
+[ext_resource type="Script" uid="uid://b8dajrp0j8p8l" path="res://scripts/fireflies.gd" id="3_p57ef"]
 [ext_resource type="Script" uid="uid://beo50xf5lvt7u" path="res://scripts/spike_controller.gd" id="4_lbhrr"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_iywne"]
 shader = ExtResource("2_iywne")
+shader_parameter/shader_time = 0.0
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6ygxs"]
 
@@ -36,7 +38,8 @@ offset_left = -144.0
 offset_top = -162.0
 offset_right = 144.0
 offset_bottom = -24.0
-color = Color(0.098, 0.098, 0.098, 1)
+color = Color(1, 1, 1, 0)
+script = ExtResource("3_p57ef")
 
 [node name="Player" parent="." unique_id=129299254 instance=ExtResource("1_uwrxv")]
 z_index = 1
