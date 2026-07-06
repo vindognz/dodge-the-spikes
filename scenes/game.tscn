@@ -2,10 +2,12 @@
 
 [ext_resource type="Script" uid="uid://d23eduqv4knlu" path="res://scripts/game.gd" id="1_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://bvyjhp7v0x04v" path="res://scenes/player.tscn" id="1_uwrxv"]
+[ext_resource type="Shader" uid="uid://du1y2b5vp0oos" path="res://shaders/fireflies_bg.gdshader" id="2_iywne"]
 [ext_resource type="PackedScene" uid="uid://uxx4nd6pm7q2" path="res://scenes/spike.tscn" id="2_yqjtg"]
 [ext_resource type="Script" uid="uid://beo50xf5lvt7u" path="res://scripts/spike_controller.gd" id="4_lbhrr"]
-[ext_resource type="Script" uid="uid://tlvmmyc7i8jv" path="res://scripts/firefly_controller.gd" id="5_iywne"]
-[ext_resource type="PackedScene" uid="uid://crubhan1q7km4" path="res://scenes/firefly.tscn" id="6_p57ef"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iywne"]
+shader = ExtResource("2_iywne")
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6ygxs"]
 
@@ -25,7 +27,16 @@ offset_left = -144.0
 offset_top = -162.0
 offset_right = 144.0
 offset_bottom = -24.0
-color = Color(0.099985994, 0.099985994, 0.099985994, 1)
+color = Color(0.098, 0.098, 0.098, 1)
+
+[node name="Fireflies" type="ColorRect" parent="." unique_id=1378642603]
+z_index = -1
+material = SubResource("ShaderMaterial_iywne")
+offset_left = -144.0
+offset_top = -162.0
+offset_right = 144.0
+offset_bottom = -24.0
+color = Color(0.098, 0.098, 0.098, 1)
 
 [node name="Player" parent="." unique_id=129299254 instance=ExtResource("1_uwrxv")]
 z_index = 1
@@ -38,11 +49,6 @@ zoom = Vector2(4, 4)
 [node name="SpikeController" type="Node2D" parent="." unique_id=68066691]
 script = ExtResource("4_lbhrr")
 spike_scene = ExtResource("2_yqjtg")
-
-[node name="FireflyController" type="Node2D" parent="." unique_id=1038254261]
-script = ExtResource("5_iywne")
-firefly_scene = ExtResource("6_p57ef")
-firefly_count = 12
 
 [node name="Floor" type="StaticBody2D" parent="." unique_id=119516899]
 position = Vector2(0, -24)
