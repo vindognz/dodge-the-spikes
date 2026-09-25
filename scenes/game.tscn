@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://uxx4nd6pm7q2" path="res://scenes/spike.tscn" id="2_yqjtg"]
 [ext_resource type="Script" uid="uid://b8dajrp0j8p8l" path="res://scripts/fireflies.gd" id="3_p57ef"]
 [ext_resource type="Script" uid="uid://beo50xf5lvt7u" path="res://scripts/spike_controller.gd" id="4_lbhrr"]
+[ext_resource type="Script" uid="uid://havf4xfa3ehw" path="res://scripts/zone_controller.gd" id="7_u5sy4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_iywne"]
 shader = ExtResource("2_iywne")
@@ -23,7 +24,32 @@ offset_top = -24.0
 offset_right = 144.0
 color = Color(0.08468992, 0.08468992, 0.08468992, 1)
 
+[node name="zones" type="ColorRect" parent="." unique_id=788556348]
+z_index = -1
+offset_left = -144.0
+offset_top = 12.0
+offset_right = -48.0
+offset_bottom = 36.0
+color = Color(0.08468992, 0.08468992, 0.08468992, 1)
+
+[node name="zones3" type="ColorRect" parent="." unique_id=544029512]
+z_index = -1
+offset_left = 48.0
+offset_top = 12.0
+offset_right = 144.0
+offset_bottom = 36.0
+color = Color(0.08468992, 0.08468992, 0.08468992, 1)
+
+[node name="zones2" type="ColorRect" parent="." unique_id=1203385455]
+z_index = -1
+offset_left = -48.0
+offset_top = 12.0
+offset_right = 48.0
+offset_bottom = 36.0
+color = Color(0.65834004, 0.6583399, 0.6583399, 1)
+
 [node name="big bg rect" type="ColorRect" parent="." unique_id=628151695]
+visible = false
 z_index = -1
 offset_left = -144.0
 offset_top = -162.0
@@ -52,6 +78,9 @@ zoom = Vector2(4, 4)
 [node name="SpikeController" type="Node2D" parent="." unique_id=68066691]
 script = ExtResource("4_lbhrr")
 spike_scene = ExtResource("2_yqjtg")
+
+[node name="ZoneController" type="Node2D" parent="." unique_id=648713134]
+script = ExtResource("7_u5sy4")
 
 [node name="Floor" type="StaticBody2D" parent="." unique_id=119516899]
 position = Vector2(0, -24)
@@ -237,18 +266,6 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 48
 text = "Score: 0"
 
-[node name="QuitButton" type="Button" parent="CanvasLayer/HUD" unique_id=1558672291]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = 1080.0
-offset_top = 8.0
-offset_right = 1144.0
-offset_bottom = 72.0
-grow_horizontal = 0
-theme_override_font_sizes/font_size = 40
-text = "❌"
-
 [node name="LeaderboardButton" type="Button" parent="CanvasLayer/HUD" unique_id=476615647]
 anchors_preset = 3
 anchor_left = 1.0
@@ -266,5 +283,4 @@ text = "🏆"
 
 [connection signal="pressed" from="CanvasLayer/GameOverScreen/PlayAgainButton" to="." method="_on_play_again_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/GameOverScreen/SubmitScoreButton" to="." method="_on_submit_score_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/HUD/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/HUD/LeaderboardButton" to="." method="_on_leaderboard_button_pressed"]

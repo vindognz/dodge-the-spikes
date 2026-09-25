@@ -4,8 +4,8 @@ extends Node2D
 @onready var camera: Camera2D = get_parent().get_node("Camera")
 
 var screen_width: float
-var min_cooldown: float = 0.75
-var base_cooldown: float = 1.5
+var min_cooldown: float = 1.0
+var base_cooldown: float = 2.0
 var timer: float = 0.0
 var last_side: String = ""
 var same_side_count: int = 0
@@ -18,7 +18,7 @@ func _process(delta: float) -> void:
 	if not Global.running: return
 	timer += delta
 	if timer >= get_cooldown():
-		if randf() < 0.3:
+		if randf() < 0.4:
 			timer = 0.0
 			spawn_spike()
 

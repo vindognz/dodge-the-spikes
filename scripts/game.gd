@@ -22,9 +22,6 @@ func _on_play_again_button_pressed() -> void:
 	get_tree().reload_current_scene()
 	Global.reset()
 
-func _on_quit_button_pressed() -> void:
-	get_tree().quit()
-
 func _on_submit_score_button_pressed() -> void:
 	Global.submit_score("test")
 

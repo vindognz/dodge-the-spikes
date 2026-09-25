@@ -31,4 +31,3 @@ Builds for Linux, Windows and Mac are available on the [releases page](https://g
 - 180 degree rotation upon jump
 - start screen
 - fix the gameover ui layout lmao
-- fireflies type background

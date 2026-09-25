@@ -8,7 +8,7 @@ void fragment() {
 	vec3 bg = vec3(0.098);
 	vec3 color = bg;
 	
-	for (int i = 0; i < 15; i ++) {
+	for (int i = 0; i < 30; i ++) {
 		float fi = float(i);
 		vec2 firefly_pos = vec2(
 			0.5 + 0.45 * sin(shader_time * 0.2 + fi * 1.234),
@@ -27,9 +27,7 @@ void fragment() {
 		float glow = pow(max(0.0, 1.0 - dist / 0.04), 3.0);
 		float pulse = 0.5 + 0.5 * sin(shader_time * (1.0 + fi * 0.3) + fi * 6.789);
 		color += glow * pulse * firefly_color;
-		float total_glow = color.r + color.g + color.b - 0.098 * 3.0;
-		COLOR = vec4(color, clamp(total_glow * 3.0, 0.0, 1.0));
 	}
 	
-	//COLOR = vec4(color, 1.0);
+	COLOR = vec4(color, 1.0);
 }

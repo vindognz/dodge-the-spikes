@@ -23,6 +23,12 @@ var secondary_points = PackedVector2Array([
 	Vector2(4, -3)
 ])
 
+
+func _ready() -> void:
+	collision_main.polygon = main_points
+	collision_secondary.polygon = secondary_points
+	speed_multiplier = 1.0 + randf_range(-0.5, 0.5)
+
 func _draw():
 	var tip_color = Color(1.0, 0.25, 0.35)
 	var base_color = Color(0.36, 0.05, 0.1)
@@ -36,11 +42,6 @@ func _draw():
 		base_color,
 		tip_color
 	]))
-
-func _ready() -> void:
-	collision_main.polygon = main_points
-	collision_secondary.polygon = secondary_points
-	speed_multiplier = 1.0 + randf_range(-0.5, 0.5)
 
 func _process(delta: float) -> void:
 	if not Global.running: return
