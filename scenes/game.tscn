@@ -6,7 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://uxx4nd6pm7q2" path="res://scenes/spike.tscn" id="2_yqjtg"]
 [ext_resource type="Script" uid="uid://b8dajrp0j8p8l" path="res://scripts/fireflies.gd" id="3_p57ef"]
 [ext_resource type="Script" uid="uid://beo50xf5lvt7u" path="res://scripts/spike_controller.gd" id="4_lbhrr"]
+[ext_resource type="Script" uid="uid://kwpd12r52fn2" path="res://scripts/camera.gd" id="5_gee14"]
 [ext_resource type="Script" uid="uid://havf4xfa3ehw" path="res://scripts/zone_controller.gd" id="7_u5sy4"]
+[ext_resource type="PackedScene" uid="uid://fmf3isf5jxft" path="res://scenes/leaderboard.tscn" id="9_0tnpc"]
+[ext_resource type="StyleBox" uid="uid://bxcr3xly5138d" path="res://styles/UI_button_style.tres" id="10_vtaks"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_iywne"]
 shader = ExtResource("2_iywne")
@@ -61,7 +64,7 @@ color = Color(0.098, 0.098, 0.098, 1)
 z_index = -1
 material = SubResource("ShaderMaterial_iywne")
 offset_left = -144.0
-offset_top = -162.0
+offset_top = -170.0
 offset_right = 144.0
 offset_bottom = -24.0
 color = Color(1, 1, 1, 0)
@@ -74,6 +77,7 @@ position = Vector2(0, -162)
 [node name="Camera" type="Camera2D" parent="." unique_id=1095580906]
 position = Vector2(0, -81)
 zoom = Vector2(4, 4)
+script = ExtResource("5_gee14")
 
 [node name="SpikeController" type="Node2D" parent="." unique_id=68066691]
 script = ExtResource("4_lbhrr")
@@ -182,7 +186,10 @@ offset_right = 1152.0
 offset_bottom = 64.0
 color = Color(0, 0, 0, 1)
 
-[node name="Bottom" type="ColorRect" parent="CanvasLayer/UI borders" unique_id=571146118]
+[node name="HUD" type="Node2D" parent="CanvasLayer" unique_id=1080260442]
+z_index = 999
+
+[node name="Bottom" type="ColorRect" parent="CanvasLayer/HUD" unique_id=571146118]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -194,65 +201,6 @@ offset_bottom = 648.0
 grow_horizontal = 2
 grow_vertical = 0
 color = Color(0.08627451, 0.08627451, 0.08627451, 1)
-
-[node name="GameOverScreen" type="Node2D" parent="CanvasLayer" unique_id=1441366816]
-
-[node name="GameOverLabel" type="Label" parent="CanvasLayer/GameOverScreen" unique_id=1503372036]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 394.0
-offset_top = 210.0
-offset_right = 759.0
-offset_bottom = 298.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 64
-text = "Game Over!"
-horizontal_alignment = 1
-
-[node name="ScoreLabel" type="Label" parent="CanvasLayer/GameOverScreen" unique_id=1134715416]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 380.5
-offset_top = 290.5
-offset_right = 771.5
-offset_bottom = 357.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 48
-text = "Your score was 0"
-horizontal_alignment = 1
-
-[node name="PlayAgainButton" type="Button" parent="CanvasLayer/GameOverScreen" unique_id=1294990620]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 489.0
-offset_top = 370.0
-offset_right = 669.0
-offset_bottom = 430.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 32
-text = "Play Again"
-
-[node name="SubmitScoreButton" type="Button" parent="CanvasLayer/GameOverScreen" unique_id=1648888760]
-offset_left = 298.0
-offset_top = 390.0
-offset_right = 407.0
-offset_bottom = 421.0
-text = "Submit score"
-
-[node name="HUD" type="Node2D" parent="CanvasLayer" unique_id=1080260442]
 
 [node name="ScoreLabel" type="Label" parent="CanvasLayer/HUD" unique_id=454359975]
 anchors_preset = 2
@@ -266,21 +214,99 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 48
 text = "Score: 0"
 
-[node name="LeaderboardButton" type="Button" parent="CanvasLayer/HUD" unique_id=476615647]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
+[node name="GameOverScreen" type="Control" parent="CanvasLayer" unique_id=2119976597]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Leaderboard" parent="CanvasLayer/GameOverScreen" unique_id=673377618 instance=ExtResource("9_0tnpc")]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.0
+offset_top = -23.0
+offset_bottom = -23.0
+grow_vertical = 1
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="PlayAgainButton" type="Button" parent="CanvasLayer/GameOverScreen/Leaderboard" unique_id=1294990620]
+z_index = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -90.0
+offset_top = 70.0
+offset_right = 90.0
+offset_bottom = 130.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("10_vtaks")
+text = "Play Again"
+
+[node name="NamePrompt" type="Control" parent="CanvasLayer/GameOverScreen" unique_id=1830409558]
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1080.0
-offset_top = 576.0
-offset_right = 1128.0
-offset_bottom = 624.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_font_sizes/font_size = 28
-text = "🏆"
+grow_horizontal = 2
+grow_vertical = 2
 
-[connection signal="pressed" from="CanvasLayer/GameOverScreen/PlayAgainButton" to="." method="_on_play_again_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/GameOverScreen/SubmitScoreButton" to="." method="_on_submit_score_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/HUD/LeaderboardButton" to="." method="_on_leaderboard_button_pressed"]
+[node name="NameInput" type="LineEdit" parent="CanvasLayer/GameOverScreen/NamePrompt" unique_id=32285384]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -45.0
+offset_right = 150.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_placeholder_color = Color(0.8745098, 0.8745098, 0.8745098, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = ExtResource("10_vtaks")
+placeholder_text = "Enter your name!"
+alignment = 1
+max_length = 16
+
+[node name="ConfirmNameButton" type="Button" parent="CanvasLayer/GameOverScreen/NamePrompt" unique_id=1515566819]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = 25.0
+offset_right = 75.0
+offset_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = ExtResource("10_vtaks")
+text = "Confirm"
+
+[connection signal="pressed" from="CanvasLayer/GameOverScreen/Leaderboard/PlayAgainButton" to="." method="_on_play_again_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/GameOverScreen/NamePrompt/ConfirmNameButton" to="." method="_on_confirm_name_button_pressed"]

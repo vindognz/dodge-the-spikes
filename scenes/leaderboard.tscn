@@ -64,11 +64,3 @@ horizontal_scroll_mode = 0
 custom_minimum_size = Vector2(400, 500)
 layout_mode = 2
 size_flags_horizontal = 3
-
-[node name="BackButton" type="Button" parent="Panel/VBox" unique_id=131837777]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 24
-text = "Back"
-
-[connection signal="pressed" from="Panel/VBox/BackButton" to="." method="_on_back_button_pressed"]

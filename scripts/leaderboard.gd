@@ -23,6 +23,9 @@ func _process(delta: float) -> void:
 			loading_label.text = "Loading" + ".".repeat(loading_dots)
 
 func populate(entries: Array) -> void:
+	for child in entry_list.get_children():
+		child.queue_free()
+	
 	loading_label.visible = false
 	scroll.visible = true
 	
@@ -37,10 +40,11 @@ func populate(entries: Array) -> void:
 		rank_label.add_theme_color_override("font_color", Color.WHITE)
 		
 		var name_label = Label.new()
+		var name_color = Color(1.0, 0.84, 0.0) if entry["name"] == Global.current_player_name else Color.WHITE
 		name_label.text = str(entry["name"])
 		name_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		name_label.add_theme_font_size_override("font_size", 24)
-		name_label.add_theme_color_override("font_color", Color.WHITE)
+		name_label.add_theme_color_override("font_color", name_color)
 		
 		var score_label = Label.new()
 		score_label.text = str(int(entry["score"]))
