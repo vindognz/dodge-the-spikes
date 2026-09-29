@@ -33,24 +33,24 @@ func populate(entries: Array) -> void:
 		var entry = entries[i]
 		
 		var row = HBoxContainer.new()
+		var row_color = Color(1.0, 0.84, 0.0) if entry["name"] == Global.current_player_name else Color.WHITE
 		
 		var rank_label = Label.new()
 		rank_label.text = str(i + 1) + "."
 		rank_label.add_theme_font_size_override("font_size", 24)
-		rank_label.add_theme_color_override("font_color", Color.WHITE)
+		rank_label.add_theme_color_override("font_color", row_color)
 		
 		var name_label = Label.new()
-		var name_color = Color(1.0, 0.84, 0.0) if entry["name"] == Global.current_player_name else Color.WHITE
 		name_label.text = str(entry["name"])
 		name_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		name_label.add_theme_font_size_override("font_size", 24)
-		name_label.add_theme_color_override("font_color", name_color)
+		name_label.add_theme_color_override("font_color", row_color)
 		
 		var score_label = Label.new()
 		score_label.text = str(int(entry["score"]))
 		score_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 		score_label.add_theme_font_size_override("font_size", 24)
-		score_label.add_theme_color_override("font_color", Color.WHITE)
+		score_label.add_theme_color_override("font_color", row_color)
 		
 		row.add_child(rank_label)
 		row.add_child(name_label)

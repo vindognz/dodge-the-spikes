@@ -13,6 +13,9 @@ func reset() -> void:
 	score = 0
 
 func submit_score(player_name: String, on_complete: Callable = Callable()) -> void:
+	if score == 0:
+		return
+	
 	var http = HTTPRequest.new()
 	get_tree().root.add_child(http)
 	
