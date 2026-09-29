@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://ymsijdw8rwbl"]
+
+[ext_resource type="Script" uid="uid://2pcs4vme2u44" path="res://scripts/spark.gd" id="1_p3mhk"]
+
+[node name="Spark" type="Node2D" unique_id=2027812750]
+script = ExtResource("1_p3mhk")

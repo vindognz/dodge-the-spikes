@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://bvyjhp7v0x04v"]
 
 [ext_resource type="Script" uid="uid://cxa0dr5e57cgo" path="res://scripts/player.gd" id="1_g2els"]
+[ext_resource type="Script" uid="uid://b1331flfnuqsm" path="res://scripts/sparks_controller.gd" id="2_g2els"]
+[ext_resource type="PackedScene" uid="uid://ymsijdw8rwbl" path="res://scenes/spark.tscn" id="3_qhqgy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j8q1p"]
 radius = 8.0
@@ -10,3 +12,8 @@ script = ExtResource("1_g2els")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=546971703]
 shape = SubResource("CircleShape2D_j8q1p")
+
+[node name="SparksController" type="Node2D" parent="." unique_id=512559077]
+script = ExtResource("2_g2els")
+spark_scene = ExtResource("3_qhqgy")
+spark_count = 20

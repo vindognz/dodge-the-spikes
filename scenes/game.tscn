@@ -71,7 +71,7 @@ color = Color(1, 1, 1, 0)
 script = ExtResource("3_p57ef")
 
 [node name="Player" parent="." unique_id=129299254 instance=ExtResource("1_uwrxv")]
-z_index = 1
+z_index = 5
 position = Vector2(0, -162)
 
 [node name="Camera" type="Camera2D" parent="." unique_id=1095580906]
@@ -86,10 +86,20 @@ spike_scene = ExtResource("2_yqjtg")
 [node name="ZoneController" type="Node2D" parent="." unique_id=648713134]
 script = ExtResource("7_u5sy4")
 
-[node name="Floor" type="StaticBody2D" parent="." unique_id=119516899]
+[node name="Bounds" type="StaticBody2D" parent="." unique_id=119516899]
 position = Vector2(0, -24)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=640408712]
+[node name="Floor" type="CollisionShape2D" parent="Bounds" unique_id=640408712]
+shape = SubResource("WorldBoundaryShape2D_6ygxs")
+
+[node name="Left" type="CollisionShape2D" parent="Bounds" unique_id=744017738]
+position = Vector2(-144, 0)
+rotation = 1.5707964
+shape = SubResource("WorldBoundaryShape2D_6ygxs")
+
+[node name="Right" type="CollisionShape2D" parent="Bounds" unique_id=985532571]
+position = Vector2(144, 0)
+rotation = 4.712389
 shape = SubResource("WorldBoundaryShape2D_6ygxs")
 
 [node name="SpikeWall" type="Node2D" parent="." unique_id=153987023]
@@ -187,7 +197,7 @@ offset_bottom = 64.0
 color = Color(0, 0, 0, 1)
 
 [node name="HUD" type="Node2D" parent="CanvasLayer" unique_id=1080260442]
-z_index = 999
+z_index = 2
 
 [node name="Bottom" type="ColorRect" parent="CanvasLayer/HUD" unique_id=571146118]
 anchors_preset = 7
@@ -237,19 +247,19 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="PlayAgainButton" type="Button" parent="CanvasLayer/GameOverScreen/Leaderboard" unique_id=1294990620]
-z_index = 1
+z_index = 3
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 7
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
+anchor_bottom = 1.0
 offset_left = -90.0
-offset_top = 70.0
+offset_top = 269.0
 offset_right = 90.0
-offset_bottom = 130.0
+offset_bottom = 329.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = ExtResource("10_vtaks")
 text = "Play Again"

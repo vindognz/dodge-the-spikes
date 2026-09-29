@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @onready var camera: Camera2D = $"../Camera"
+@onready var sparks_controller: Node2D = $SparksController
 
 const SPEED = 80.0
 const JUMP_VELOCITY = 400.0
@@ -61,3 +62,8 @@ func _physics_process(delta: float) -> void:
 		draw_scale = draw_scale.lerp(target_scale, delta * 12.0)
 
 	queue_redraw()
+
+func on_death() -> void:
+	Global.running = false
+	sparks_controller.burst()
+	camera.shake(7.5, 0.25)
