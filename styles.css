@@ -1,0 +1,90 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+	background: #1a1620;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	min-height: 100vh;
+	color: #e8e6e1;
+}
+
+.splash {
+    position: fixed;
+    inset: 0;
+    background: #0d0b10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    z-index: 100;
+    animation: fadeOut 2s ease-out 1.5s forwards;
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+.splash-title {
+    font-size: 42px;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+.splash-subtitle {
+    font-size: 16px;
+    color: #a89f96;
+    text-align: center;
+}
+
+.container {
+	width: 100%;
+	max-width: 1200px;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	opacity: 0;
+	animation: fadeIn 1s ease-out 2.3s forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+.game-section {
+    width: 100%;
+    aspect-ratio: 1152 / 648;
+    background: #000;
+    margin: 2rem 0;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0, 0.5);
+}
+
+.footer {
+    text-align: center;
+    font-size: 13px;
+    color: #7a7268;
+    padding: 2rem 1rem;
+}
+
+.footer a {
+    color: #d4a574;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    color: #e8c89e;
+}

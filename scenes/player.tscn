@@ -16,4 +16,3 @@ shape = SubResource("CircleShape2D_j8q1p")
 [node name="SparksController" type="Node2D" parent="." unique_id=512559077]
 script = ExtResource("2_g2els")
 spark_scene = ExtResource("3_qhqgy")
-spark_count = 20

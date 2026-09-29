@@ -50,22 +50,28 @@ func submit_score(player_name: String, on_complete: Callable = Callable()) -> vo
 	)
 
 func fetch_leaderboard(callback: Callable) -> void:
-	var http = HTTPRequest.new()
-	get_tree().root.add_child(http)
+	var js_code = """
+	fetch('%s/rest/v1/rpc/get_leaderboard', {
+		headers: {
+			'apikey': '%s',
+			'Authorization': 'Bearer %s'
+		}
+	})
+	.then(r => r.json())
+	.then(data => window.leaderboardData = data);
+	""" % [SUPABASE_URL, SUPABASE_KEY, SUPABASE_KEY]
 	
-	var url = SUPABASE_URL + "/rest/v1/rpc/get_leaderboard"
-	var headers = [
-		"Content-Type: application/json",
-		"apikey: " + SUPABASE_KEY,
-		"Authorization: Bearer " + SUPABASE_KEY
-	]
+	JavaScriptBridge.eval(js_code)
 	
-	http.request(url, headers, HTTPClient.METHOD_GET)
-	http.request_completed.connect(func(_result, code, _headers, body):
-		if code == 200:
-			var json = JSON.parse_string(body.get_string_from_utf8())
-			callback.call(json)
-		else:
-			print("Fetch failed: ", code)
-		http.queue_free()
-	)
+	# poll for the data
+	var timer = 0.0
+	while timer < 5.0:
+		if JavaScriptBridge.eval("typeof window.leaderboardData !== 'undefined'"):
+			var data_str = JavaScriptBridge.eval("JSON.stringify(window.leaderboardData)")
+			var data = JSON.parse_string(data_str)
+			callback.call(data)
+			return
+		timer += 0.1
+		await get_tree().create_timer(0.1).timeout
+	
+	callback.call([])
