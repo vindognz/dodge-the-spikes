@@ -3,6 +3,8 @@ extends Node2D
 @export var spike_scene: PackedScene
 @onready var camera: Camera2D = get_parent().get_node("Camera")
 
+const LEVEL_COOLDOWN_STEP = 0.1
+
 var screen_width: float
 var min_cooldown: float = 1.0
 var base_cooldown: float = 2.0
@@ -16,14 +18,17 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if not Global.running: return
+	if Global.in_transition or Global.spawned_this_level >= Global.SPIKES_PER_LEVEL:
+		timer = 0.0
+		return
 	timer += delta
 	if timer >= get_cooldown():
-		if randf() < 0.4:
+		if randf() < 0.3:
 			timer = 0.0
 			spawn_spike()
 
 func get_cooldown() -> float:
-	return max(min_cooldown, base_cooldown - Global.score * 0.02)
+	return max(min_cooldown, base_cooldown - (Global.level - 1) * LEVEL_COOLDOWN_STEP)
 
 func pick_side() -> String:
 	var side = "left" if randf() < 0.5 else "right"
@@ -38,6 +43,8 @@ func pick_side() -> String:
 	return side
 
 func spawn_spike() -> void:
+	Global.spawned_this_level += 1
+	
 	var spike = spike_scene.instantiate()
 	var side = pick_side()
 	var half = screen_width / 2

@@ -1,10 +1,10 @@
 shader_type canvas_item;
 
 uniform float shader_time;
+uniform float aspect = 2.087;
 
 void fragment() {
 	vec2 uv = UV;
-	float aspect = 288.0 / 138.0;
 	vec3 bg = vec3(0.098);
 	vec3 color = bg;
 	

@@ -6,6 +6,9 @@ const COL_BOUNDARIES = [
 	[48.0, 144.0]
 ]
 
+const ZONE_START_LEVEL = 2
+const DOUBLE_ZONE_LEVEL = 4
+
 const ZONE_WARN_TIME = 3.0
 const ZONE_FAST_FLASH_TIME = 1.0
 const CHECK_INTERVAL = 10.0
@@ -38,15 +41,17 @@ func _draw() -> void:
 			var mid_y = -162 / 2.0
 			draw_rect(Rect2(x, mid_y - h / 2.0, w, h), Color(1, 0.1, 0.1, 0.6 * (1.0 - t)))
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if not Global.running: return
-	if Global.score < 10: return
+	if Global.level < ZONE_START_LEVEL: return
 	
-	check_timer += delta
-	if check_timer >= CHECK_INTERVAL:
+	if Global.in_transition:
 		check_timer = 0.0
-		maybe_spawn_zone()
+	else:
+		check_timer += delta
+		if check_timer >= CHECK_INTERVAL:
+			check_timer = 0.0
+			maybe_spawn_zone()
 	
 	for zone in active_zones:
 		zone.timer += delta
@@ -73,7 +78,7 @@ func get_player_col() -> int:
 func maybe_spawn_zone() -> void:
 	if randf() > TRIGGER_CHANCE: return
 	
-	var count = 2 if Global.score >= 30 else 1
+	var count = 2 if Global.level >= DOUBLE_ZONE_LEVEL else 1
 	var picks = pick_cols(count)
 	
 	for col in picks:

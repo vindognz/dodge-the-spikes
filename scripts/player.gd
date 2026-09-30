@@ -3,15 +3,13 @@ extends CharacterBody2D
 @onready var camera: Camera2D = $"../Camera"
 @onready var sparks_controller: Node2D = $SparksController
 
-const SPEED = 80.0
-const JUMP_VELOCITY = 400.0
-const GRAVITY = Vector2(0, 1400) #Vector2(0, 980.0)
+const SPEED: float = 80.0
+const JUMP_VELOCITY: float = 400.0
+const GRAVITY: Vector2 = Vector2(0, 1400) # Vector2(0, 980.0)
 
 var draw_scale: Vector2 = Vector2(1.0, 1.0)
 var target_scale: Vector2 = Vector2(1.0, 1.0)
-
 var splat_timer: float = 0.0
-
 var was_on_floor: bool = true
 
 func _draw():

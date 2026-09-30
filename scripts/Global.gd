@@ -3,14 +3,24 @@ extends Node2D
 const SUPABASE_URL="https://iouyugorzkjsugypqsan.supabase.co"
 const SUPABASE_KEY="sb_publishable_pb5oBJ0UfdFDiWoVcmM7Dg_qRVDEsuj"
 
-var running: bool = true
+const SPIKES_PER_LEVEL = 10
+
+var level: int = 1
 var score: int = 0
 var highscore: int = 0
+var spawned_this_level: int = 0
+
+var running: bool = true
+var in_transition: bool = false
+
 var current_player_name: String = ""
 
 func reset() -> void:
 	running = true
+	in_transition = false
 	score = 0
+	spawned_this_level = 0
+	level = 1
 
 func submit_score(player_name: String, on_complete: Callable = Callable()) -> void:
 	if score == 0:

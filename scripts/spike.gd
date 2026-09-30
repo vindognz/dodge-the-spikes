@@ -5,6 +5,8 @@ extends Node2D
 
 @export var moves: bool = true
 
+const LEVEL_SPEED_STEP = 10.0
+
 var scored: bool = false
 var direction: int = 1
 var half_width: float = 0.0
@@ -28,6 +30,8 @@ func _ready() -> void:
 	collision_main.polygon = main_points
 	collision_secondary.polygon = secondary_points
 	speed_multiplier = 1.0 + randf_range(-0.5, 0.5)
+	if moves:
+		add_to_group("spikes")
 
 func _draw():
 	var tip_color = Color(1.0, 0.25, 0.35)
@@ -47,7 +51,7 @@ func _process(delta: float) -> void:
 	if not Global.running: return
 	if not moves: return
 	
-	var current_speed = (speed + Global.score * 2) * direction * speed_multiplier
+	var current_speed = (speed + (Global.level - 1) * LEVEL_SPEED_STEP) * direction * speed_multiplier
 	position.x += current_speed * delta
 	
 	if not scored:

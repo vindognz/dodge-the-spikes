@@ -2,7 +2,14 @@ extends ColorRect
 
 var shader_time: float = 0.0
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _ready() -> void:
+	resized.connect(_update_aspect)
+	_update_aspect()
+
+func _update_aspect() -> void:
+	if size.y > 0.0:
+		material.set_shader_parameter("aspect", size.x / size.y)
+
 func _process(delta: float) -> void:
 	if not Global.running: return
 	

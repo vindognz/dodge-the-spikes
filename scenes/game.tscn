@@ -9,11 +9,13 @@
 [ext_resource type="Script" uid="uid://kwpd12r52fn2" path="res://scripts/camera.gd" id="5_gee14"]
 [ext_resource type="Script" uid="uid://havf4xfa3ehw" path="res://scripts/zone_controller.gd" id="7_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://fmf3isf5jxft" path="res://scenes/leaderboard.tscn" id="9_0tnpc"]
+[ext_resource type="Script" uid="uid://dalei46xxjy13" path="res://scripts/level_controller.gd" id="9_kvpfn"]
 [ext_resource type="StyleBox" uid="uid://bxcr3xly5138d" path="res://styles/UI_button_style.tres" id="10_vtaks"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_iywne"]
 shader = ExtResource("2_iywne")
 shader_parameter/shader_time = 0.0
+shader_parameter/aspect = 2.087
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6ygxs"]
 
@@ -85,6 +87,9 @@ spike_scene = ExtResource("2_yqjtg")
 
 [node name="ZoneController" type="Node2D" parent="." unique_id=648713134]
 script = ExtResource("7_u5sy4")
+
+[node name="LevelController" type="Node2D" parent="." unique_id=369797189]
+script = ExtResource("9_kvpfn")
 
 [node name="Bounds" type="StaticBody2D" parent="." unique_id=119516899]
 position = Vector2(0, -24)
@@ -317,6 +322,24 @@ theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = ExtResource("10_vtaks")
 text = "Confirm"
+
+[node name="LevelBanner" type="Label" parent="CanvasLayer" unique_id=1057387319]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 64
+text = "Level 1"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="CanvasLayer/GameOverScreen/Leaderboard/PlayAgainButton" to="." method="_on_play_again_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/GameOverScreen/NamePrompt/ConfirmNameButton" to="." method="_on_confirm_name_button_pressed"]
