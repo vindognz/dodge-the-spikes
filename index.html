@@ -1,25 +1,43 @@
 <!DOCTYPE html>
-<html lang='en'>
+<html lang="en">
 <head>
-  <meta charset='utf-8'>
-  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-  <title>Dodge The Spikes</title>
-  <link rel='stylesheet' href='styles.css'>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Dodge The Spikes</title>
+	<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="splash">
-    <div class="splash-title">Dodge The Spikes</div>
-    <div class="splash-subtitle">A game about dodging spikes...</div>
-  </div>
+	<svg class="wall wall-left" aria-hidden="true">
+		<defs>
+			<linearGradient id="spike-gradient" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="80" y2="0">
+				<stop offset="0" stop-color="#5c0d1a"/>
+				<stop offset="1" stop-color="#ff4059"/>
+			</linearGradient>
+			<pattern id="spike-tile" patternUnits="userSpaceOnUse" width="90" height="64">
+				<polygon points="0,2 0,42 80,18" fill="url(#spike-gradient)"/>
+				<polygon points="0,36 0,64 48,52" fill="url(#spike-gradient)"/>
+			</pattern>
+		</defs>
+		<rect width="100%" height="100%" fill="url(#spike-tile)"/>
+	</svg>
 
-  <div class="container">
-    <div class="game-section">
-      <iframe src="web-export/index.html" style="width: 100%; height: 100%; border: none;"></iframe>
-    </div>
+	<svg class="wall wall-right" aria-hidden="true">
+		<rect width="100%" height="100%" fill="url(#spike-tile)"/>
+	</svg>
 
-    <div class="footer">
-      Made by <a href="https://github.com/vindognz">@vindognz</a> for HackClub's Stardance.
-    </div>
-  </div>
+	<div class="splash">
+		<div class="splash-title">Dodge The Spikes</div>
+		<div class="splash-subtitle">A game about dodging spikes...</div>
+	</div>
+
+	<main class="container">
+		<div class="game-section">
+			<iframe src="web-export/index.html" title="Dodge The Spikes"></iframe>
+		</div>
+
+		<div class="footer">
+			Made by <a href="https://github.com/vindognz">@vindognz</a> for Hackclub's Stardance.
+		</div>
+	</main>
 </body>
 </html>

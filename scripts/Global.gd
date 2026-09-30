@@ -14,6 +14,8 @@ func reset() -> void:
 
 func submit_score(player_name: String, on_complete: Callable = Callable()) -> void:
 	if score == 0:
+		if on_complete.is_valid():
+			on_complete.call()
 		return
 	
 	var http = HTTPRequest.new()
@@ -35,6 +37,8 @@ func submit_score(player_name: String, on_complete: Callable = Callable()) -> vo
 	if error != OK:
 		print("HTTP request failed to start: ", error)
 		http.queue_free()
+		if on_complete.is_valid():
+			on_complete.call()
 		return
 	
 	http.request_completed.connect(
@@ -50,28 +54,54 @@ func submit_score(player_name: String, on_complete: Callable = Callable()) -> vo
 	)
 
 func fetch_leaderboard(callback: Callable) -> void:
-	var js_code = """
+	if OS.has_feature("web"):
+		_fetch_leaderboard_web(callback)
+	else:
+		_fetch_leaderboard_http(callback)
+
+func _fetch_leaderboard_http(callback: Callable) -> void:
+	var http = HTTPRequest.new()
+	get_tree().root.add_child(http)
+	
+	var url = SUPABASE_URL + "/rest/v1/rpc/get_leaderboard"
+	var headers = [
+		"apikey: " + SUPABASE_KEY,
+		"Authorization: Bearer " + SUPABASE_KEY
+	]
+	http.request(url, headers, HTTPClient.METHOD_GET)
+	http.request_completed.connect(func(_result, code, _headers, body):
+		if code == 200 and callback.is_valid():
+			callback.call(JSON.parse_string(body.get_string_from_utf8()))
+		else:
+			print("Fetch failed: ", code)
+		http.queue_free()
+	)
+
+func _fetch_leaderboard_web(callback: Callable) -> void:
+	# reset first, otherwise the poll sees stale data from the previous fetch
+	JavaScriptBridge.eval("window.leaderboardData = undefined;")
+	JavaScriptBridge.eval("""
 	fetch('%s/rest/v1/rpc/get_leaderboard', {
+		cache: 'no-store',
 		headers: {
 			'apikey': '%s',
 			'Authorization': 'Bearer %s'
 		}
 	})
 	.then(r => r.json())
-	.then(data => window.leaderboardData = data);
-	""" % [SUPABASE_URL, SUPABASE_KEY, SUPABASE_KEY]
+	.then(data => window.leaderboardData = data)
+	.catch(e => window.leaderboardData = []);
+	""" % [SUPABASE_URL, SUPABASE_KEY, SUPABASE_KEY])
 	
-	JavaScriptBridge.eval(js_code)
-	
-	# poll for the data
 	var timer = 0.0
 	while timer < 5.0:
 		if JavaScriptBridge.eval("typeof window.leaderboardData !== 'undefined'"):
-			var data_str = JavaScriptBridge.eval("JSON.stringify(window.leaderboardData)")
-			var data = JSON.parse_string(data_str)
-			callback.call(data)
+			var data = JSON.parse_string(JavaScriptBridge.eval("JSON.stringify(window.leaderboardData)"))
+			if callback.is_valid():
+				callback.call(data)
 			return
 		timer += 0.1
 		await get_tree().create_timer(0.1).timeout
 	
-	callback.call([])
+	if callback.is_valid():
+		callback.call([])
