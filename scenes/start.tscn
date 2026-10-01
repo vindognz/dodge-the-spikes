@@ -4,13 +4,14 @@
 [ext_resource type="Shader" uid="uid://du1y2b5vp0oos" path="res://shaders/fireflies_bg.gdshader" id="2_kdmts"]
 [ext_resource type="StyleBox" uid="uid://bxcr3xly5138d" path="res://styles/UI_button_style.tres" id="2_u80x2"]
 [ext_resource type="Script" uid="uid://b8dajrp0j8p8l" path="res://scripts/fireflies.gd" id="3_0auqf"]
+[ext_resource type="Script" uid="uid://cq4xobldcrtip" path="res://scripts/demo_player.gd" id="4_0auqf"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_klm2k"]
 shader = ExtResource("2_kdmts")
 shader_parameter/shader_time = 0.0
 shader_parameter/aspect = 2.087
 
-[node name="Control" type="Control" unique_id=1645800055]
+[node name="Start" type="Control" unique_id=1645800055]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -28,6 +29,23 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_0auqf")
+
+[node name="DemoPlayer" type="Control" parent="." unique_id=980383594]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -160.0
+offset_top = -272.0
+offset_right = 160.0
+offset_bottom = -72.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+script = ExtResource("4_0auqf")
 
 [node name="StartGameButton" type="Button" parent="." unique_id=1081300156]
 custom_minimum_size = Vector2(240, 80)
