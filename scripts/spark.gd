@@ -10,7 +10,6 @@ func _process(delta: float) -> void:
 	velocity *= 0.95 # drag / air resistance idk bro
 	position += velocity * delta / 1.5
 	
-	var alpha = 1.0 - (timer / lifetime)
 	queue_redraw()
 	
 	if timer >= lifetime:

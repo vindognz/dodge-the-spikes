@@ -5,7 +5,7 @@ extends Node2D
 func _ready() -> void:
 	level_banner.modulate.a = 0.0
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if not Global.running or Global.in_transition:
 		return
 	
