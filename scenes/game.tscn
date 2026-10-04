@@ -19,6 +19,14 @@ shader_parameter/aspect = 2.087
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6ygxs"]
 
+[sub_resource type="InputEventKey" id="InputEventKey_dinhu"]
+device = -1
+keycode = 32
+unicode = 32
+
+[sub_resource type="Shortcut" id="Shortcut_kvpfn"]
+events = [SubResource("InputEventKey_dinhu")]
+
 [node name="Game" type="Node2D" unique_id=989393803]
 script = ExtResource("1_lnu2h")
 
@@ -267,6 +275,7 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = ExtResource("10_vtaks")
+shortcut = SubResource("Shortcut_kvpfn")
 text = "Play Again"
 
 [node name="NamePrompt" type="Control" parent="CanvasLayer/GameOverScreen" unique_id=1830409558]

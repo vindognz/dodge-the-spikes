@@ -8,26 +8,30 @@ Spikes fly at you from both sides of the screen. Jump over them. Don't get hit.
 ## How to play?
 - **Move**: Arrows keys or WASD
 - **Jump**: Space / W / Up arrow (you can hold to bounce)
-- Survive as long as possible.
+- Every 10 spikes is a new level, and every level is faster
 
 ## Features
-- Spikes spawning from random sides
-- Speed scales with score - the longer you survive, the harder it gets
-- Highscore tracking
-- Global leaderboard
-- Game over screen
+- Levels: speed, spawn rate and danger zones all scale with your level
+- Danger zones (and at higher levels, two at once)
+- A squishy 'jelly' ball that stretches, splats and shatters on spikes
+- Firefly background, written as a shader
+- Global leaderboard (shows best score per play)
+- Everything is drawn in code (no image assets!)
 
 ## Play
-[Play in browser](https://example.com/not-implemented-yet) *(WebGL)*
-
-## Downloads
-Builds for Linux, Windows and Mac are available on the [releases page](https://github.com/vindognz/dodge-the-spikes/releases/latest).
+[Play in browser](https://spikes.vindognz.hackclub.app) *(WebGL)*
 
 ## Built with
 - [Godot 4.7](https://godotengine.org)
+- [Supabase](https://supabase.com) for the leaderboard backend
+- Hosted on [HackClub Nest](https://hackclub.app)
+
+## Running locally
+Open the project in Godot 4.7 and hit play.
+
+For the web build, run serve.py and open http://localhost:5001
 
 ## todo based on playtesting
-- death burst effect thing
-- 180 degree rotation upon jump
-- start screen
-- fix the gameover ui layout lmao
+- sfx
+- score and highscore on the game over screen
+- polish
