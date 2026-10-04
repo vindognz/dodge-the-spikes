@@ -19,17 +19,17 @@ Spikes fly at you from both sides of the screen. Jump over them. Don't get hit.
 - Everything is drawn in code (no image assets!)
 
 ## Play
-[Play in browser](https://spikes.vindognz.hackclub.app) *(WebGL)*
+[Play in browser](https://vindognz.github.io/dodge-the-spikes/) *(WebGL)*
 
 ## Built with
 - [Godot 4.7](https://godotengine.org)
 - [Supabase](https://supabase.com) for the leaderboard backend
-- Hosted on [HackClub Nest](https://hackclub.app)
+- Hosted on [Github Pages](https://pages.github.com)
 
 ## Running locally
 Open the project in Godot 4.7 and hit play.
 
-For the web build, run serve.py and open http://localhost:5001
+For the web build, run a HTTP server (using python3 -m http.server or VSCode Live Server plugin) and visit localhost:8000
 
 ## todo based on playtesting
 - sfx
