@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var level_banner: Label = $"../CanvasLayer/LevelBanner"
+@onready var level_up_sound: AudioStreamPlayer2D = $"../Sounds/LevelUpSound"
 
 func _ready() -> void:
 	level_banner.modulate.a = 0.0
@@ -24,6 +25,7 @@ func start_transition() -> void:
 	Global.level += 1
 	Global.spawned_this_level = 0
 	level_banner.text = "Level " + str(Global.level)
+	level_up_sound.play()
 	
 	var tween = create_tween()
 	tween.tween_property(level_banner, "modulate:a", 1.0, 0.4)

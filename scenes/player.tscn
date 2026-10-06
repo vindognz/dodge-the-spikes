@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://cxa0dr5e57cgo" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Script" uid="uid://b1331flfnuqsm" path="res://scripts/sparks_controller.gd" id="2_g2els"]
 [ext_resource type="PackedScene" uid="uid://ymsijdw8rwbl" path="res://scenes/spark.tscn" id="3_qhqgy"]
+[ext_resource type="AudioStream" uid="uid://bq3h7ej2mvjgp" path="res://assets/sfx/jump.wav" id="4_dqkch"]
+[ext_resource type="AudioStream" uid="uid://dukvfqd0yc57g" path="res://assets/sfx/thud.wav" id="5_qlg0r"]
+[ext_resource type="AudioStream" uid="uid://woen32x1qr2n" path="res://assets/sfx/death.wav" id="6_tuyoq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j8q1p"]
 radius = 8.0
@@ -16,3 +19,13 @@ shape = SubResource("CircleShape2D_j8q1p")
 [node name="SparksController" type="Node2D" parent="." unique_id=512559077]
 script = ExtResource("2_g2els")
 spark_scene = ExtResource("3_qhqgy")
+
+[node name="JumpSound" type="AudioStreamPlayer2D" parent="." unique_id=2105010388]
+stream = ExtResource("4_dqkch")
+volume_db = -10.0
+
+[node name="ThudSound" type="AudioStreamPlayer2D" parent="." unique_id=322180431]
+stream = ExtResource("5_qlg0r")
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="." unique_id=983816307]
+stream = ExtResource("6_tuyoq")

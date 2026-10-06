@@ -2,6 +2,9 @@ extends CharacterBody2D
 
 @onready var camera: Camera2D = $"../Camera"
 @onready var sparks_controller: Node2D = $SparksController
+@onready var jump_sound: AudioStreamPlayer2D = $JumpSound
+@onready var thud_sound: AudioStreamPlayer2D = $ThudSound
+@onready var death_sound: AudioStreamPlayer2D = $DeathSound
 
 const SPEED: float = 80.0
 const JUMP_VELOCITY: float = 400.0
@@ -31,6 +34,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("jump") and is_on_floor():
 		velocity.y = -JUMP_VELOCITY
 		target_scale = Vector2(1.15, 0.85)
+		jump_sound.play()
 
 	var direction := Input.get_axis("left", "right")
 
@@ -45,7 +49,9 @@ func _physics_process(delta: float) -> void:
 	was_on_floor = is_on_floor()
 
 	if just_landed:
-		camera.shake(5.0, 0.1)
+		camera.shake(7.0, 0.1)
+		thud_sound.pitch_scale = randf_range(0.5, 1.5)
+		thud_sound.play()
 		var tween = create_tween()
 		tween.tween_property(self, "draw_scale", Vector2(1.35, 0.65), 0.05)
 		tween.tween_property(self, "draw_scale", Vector2(0.85, 1.15), 0.06)
@@ -63,5 +69,6 @@ func _physics_process(delta: float) -> void:
 
 func on_death() -> void:
 	Global.running = false
+	death_sound.play()
 	sparks_controller.burst()
-	camera.shake(7.5, 0.25)
+	camera.shake(10.5, 0.25)

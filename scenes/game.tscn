@@ -2,8 +2,10 @@
 
 [ext_resource type="Script" uid="uid://d23eduqv4knlu" path="res://scripts/game.gd" id="1_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://bvyjhp7v0x04v" path="res://scenes/player.tscn" id="1_uwrxv"]
+[ext_resource type="AudioStream" uid="uid://ci6pnpumog1wo" path="res://assets/sfx/score.wav" id="2_dinhu"]
 [ext_resource type="Shader" uid="uid://du1y2b5vp0oos" path="res://shaders/fireflies_bg.gdshader" id="2_iywne"]
 [ext_resource type="PackedScene" uid="uid://uxx4nd6pm7q2" path="res://scenes/spike.tscn" id="2_yqjtg"]
+[ext_resource type="AudioStream" uid="uid://q30ifgphetwl" path="res://assets/sfx/levelup.wav" id="3_kvuet"]
 [ext_resource type="Script" uid="uid://b8dajrp0j8p8l" path="res://scripts/fireflies.gd" id="3_p57ef"]
 [ext_resource type="Script" uid="uid://beo50xf5lvt7u" path="res://scripts/spike_controller.gd" id="4_lbhrr"]
 [ext_resource type="Script" uid="uid://kwpd12r52fn2" path="res://scripts/camera.gd" id="5_gee14"]
@@ -29,6 +31,15 @@ events = [SubResource("InputEventKey_dinhu")]
 
 [node name="Game" type="Node2D" unique_id=989393803]
 script = ExtResource("1_lnu2h")
+
+[node name="Sounds" type="Node2D" parent="." unique_id=463445778]
+
+[node name="ScoreSound" type="AudioStreamPlayer2D" parent="Sounds" unique_id=1431205010]
+stream = ExtResource("2_dinhu")
+volume_db = -4.0
+
+[node name="LevelUpSound" type="AudioStreamPlayer2D" parent="Sounds" unique_id=475620454]
+stream = ExtResource("3_kvuet")
 
 [node name="small bottom bg rect" type="ColorRect" parent="." unique_id=714083169]
 z_index = -1
