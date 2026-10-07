@@ -59,11 +59,11 @@ func _process(delta: float) -> void:
 		if direction == 1 and position.x > player.position.x:
 			scored = true
 			Global.score += 1
-			get_parent().get_node("Sounds/ScoreSound").play()
+			if not Global.mute_sfx: get_parent().get_node("Sounds/ScoreSound").play()
 		elif direction == -1 and position.x < player.position.x:
 			scored = true
 			Global.score += 1
-			get_parent().get_node("Sounds/ScoreSound").play()
+			if not Global.mute_sfx: get_parent().get_node("Sounds/ScoreSound").play()
 	
 	if half_width > 0:
 		if position.x > half_width + 20 or position.x < -half_width - 20:

@@ -34,7 +34,10 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("jump") and is_on_floor():
 		velocity.y = -JUMP_VELOCITY
 		target_scale = Vector2(1.15, 0.85)
-		jump_sound.play()
+		if not Global.mute_sfx: jump_sound.play()
+	
+	if Input.is_action_just_pressed("mute-sfx"):
+		Global.mute_sfx = !Global.mute_sfx
 
 	var direction := Input.get_axis("left", "right")
 
@@ -51,7 +54,7 @@ func _physics_process(delta: float) -> void:
 	if just_landed:
 		camera.shake(7.0, 0.1)
 		thud_sound.pitch_scale = randf_range(0.5, 1.5)
-		thud_sound.play()
+		if not Global.mute_sfx: thud_sound.play()
 		var tween = create_tween()
 		tween.tween_property(self, "draw_scale", Vector2(1.35, 0.65), 0.05)
 		tween.tween_property(self, "draw_scale", Vector2(0.85, 1.15), 0.06)
@@ -69,6 +72,6 @@ func _physics_process(delta: float) -> void:
 
 func on_death() -> void:
 	Global.running = false
-	death_sound.play()
+	if not Global.mute_sfx: death_sound.play()
 	sparks_controller.burst()
 	camera.shake(10.5, 0.25)

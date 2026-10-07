@@ -29,9 +29,5 @@ Spikes fly at you from both sides of the screen. Jump over them. Don't get hit.
 ## Running locally
 Open the project in Godot 4.7 and hit play.
 
-For the web build, run a HTTP server (using python3 -m http.server or VSCode Live Server plugin) and visit localhost:8000
-
 ## todo based on playtesting
-- sfx
-- score and highscore on the game over screen
 - polish

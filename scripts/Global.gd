@@ -12,6 +12,7 @@ var spawned_this_level: int = 0
 
 var running: bool = true
 var in_transition: bool = false
+var mute_sfx: bool = false
 
 var current_player_name: String = ""
 
