@@ -9,6 +9,7 @@ extends Node2D
 @onready var player: CharacterBody2D = $Player
 
 var game_over_triggered: bool = false
+var can_restart: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -28,6 +29,9 @@ func _process(_delta: float) -> void:
 		Global.highscore = max(Global.score, Global.highscore)
 
 func on_game_over() -> void:
+	can_restart = false
+	get_tree().create_timer(0.5).timeout.connect(func(): can_restart = true)
+	
 	if Global.current_player_name == "":
 		name_prompt.visible = true
 		leaderboard.visible = false
@@ -43,8 +47,9 @@ func on_game_over() -> void:
 		)
 
 func _on_play_again_button_pressed() -> void:
-	Global.reset()
-	get_tree().reload_current_scene()
+	if can_restart:
+		Global.reset()
+		get_tree().reload_current_scene()
 
 func _on_confirm_name_button_pressed() -> void:
 	var name_text = name_input.text.strip_edges()
