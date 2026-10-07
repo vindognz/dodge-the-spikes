@@ -41,15 +41,28 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = 12
 
-[node name="Title" type="Label" parent="Panel/VBox" unique_id=1352179660]
+[node name="TitleOutline" type="Label" parent="Panel/VBox" unique_id=1352179660]
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 0.8392157, 0, 1)
+theme_override_constants/outline_size = 24
+theme_override_font_sizes/font_size = 32
+text = "Leaderboard"
+horizontal_alignment = 1
+
+[node name="Title" type="Label" parent="Panel/VBox/TitleOutline" unique_id=1950245986]
+layout_mode = 0
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 0.8392157, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 0.8392157, 0, 1)
+theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 32
 text = "Leaderboard"
 horizontal_alignment = 1
 
 [node name="LoadingLabel" type="Label" parent="Panel/VBox" unique_id=69671536]
 layout_mode = 2
+theme_override_constants/outline_size = 16
 theme_override_font_sizes/font_size = 24
 text = "Loading"
 horizontal_alignment = 1

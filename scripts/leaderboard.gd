@@ -39,18 +39,21 @@ func populate(entries: Array) -> void:
 		rank_label.text = str(i + 1) + "."
 		rank_label.add_theme_font_size_override("font_size", 24)
 		rank_label.add_theme_color_override("font_color", row_color)
+		rank_label.add_theme_constant_override("outline_size", 8)
 		
 		var name_label = Label.new()
 		name_label.text = str(entry["name"])
 		name_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		name_label.add_theme_font_size_override("font_size", 24)
 		name_label.add_theme_color_override("font_color", row_color)
+		name_label.add_theme_constant_override("outline_size", 8)
 		
 		var score_label = Label.new()
 		score_label.text = str(int(entry["score"]))
 		score_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 		score_label.add_theme_font_size_override("font_size", 24)
 		score_label.add_theme_color_override("font_color", row_color)
+		score_label.add_theme_constant_override("outline_size", 8)
 		
 		row.add_child(rank_label)
 		row.add_child(name_label)

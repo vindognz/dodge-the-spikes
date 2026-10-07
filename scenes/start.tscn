@@ -61,6 +61,7 @@ offset_right = 257.5
 offset_bottom = 48.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/outline_size = 16
 theme_override_font_sizes/font_size = 64
 theme_override_styles/normal = ExtResource("2_u80x2")
 text = "Play"
@@ -71,13 +72,15 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -66.0
-offset_bottom = -32.0
+offset_top = -79.0
+offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/font_color = Color(0.65882355, 0.62352943, 0.5882353, 1)
+theme_override_constants/outline_size = 16
 theme_override_font_sizes/font_size = 24
-text = "Arrows / WASD to move, space to jump"
+text = "Arrows / WASD to move, space to jump
+M to mute sound effects :)"
 horizontal_alignment = 1
 
 [connection signal="pressed" from="StartGameButton" to="." method="_on_start_game_button_pressed"]
