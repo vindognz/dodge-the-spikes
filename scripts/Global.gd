@@ -23,6 +23,11 @@ func reset() -> void:
 	spawned_this_level = 0
 	level = 1
 
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("mute-sfx"):
+		mute_sfx = !mute_sfx
+		AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), mute_sfx);
+
 func submit_score(player_name: String, on_complete: Callable = Callable()) -> void:
 	if score == 0:
 		if on_complete.is_valid():

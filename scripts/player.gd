@@ -35,10 +35,6 @@ func _physics_process(delta: float) -> void:
 		velocity.y = -JUMP_VELOCITY
 		target_scale = Vector2(1.15, 0.85)
 		jump_sound.play()
-	
-	if Input.is_action_just_pressed("mute-sfx"):
-		Global.mute_sfx = !Global.mute_sfx
-		AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), Global.mute_sfx)
 
 	var direction := Input.get_axis("left", "right")
 
