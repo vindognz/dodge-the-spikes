@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://d23eduqv4knlu" path="res://scripts/game.gd" id="1_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://bvyjhp7v0x04v" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="AudioStream" uid="uid://ci6pnpumog1wo" path="res://assets/sfx/score.wav" id="2_dinhu"]
-[ext_resource type="Shader" uid="uid://du1y2b5vp0oos" path="res://shaders/fireflies_bg.gdshader" id="2_iywne"]
 [ext_resource type="PackedScene" uid="uid://uxx4nd6pm7q2" path="res://scenes/spike.tscn" id="2_yqjtg"]
 [ext_resource type="AudioStream" uid="uid://q30ifgphetwl" path="res://assets/sfx/levelup.wav" id="3_kvuet"]
 [ext_resource type="Script" uid="uid://b8dajrp0j8p8l" path="res://scripts/fireflies.gd" id="3_p57ef"]
@@ -13,11 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://fmf3isf5jxft" path="res://scenes/leaderboard.tscn" id="9_0tnpc"]
 [ext_resource type="Script" uid="uid://dalei46xxjy13" path="res://scripts/level_controller.gd" id="9_kvpfn"]
 [ext_resource type="StyleBox" uid="uid://bxcr3xly5138d" path="res://styles/UI_button_style.tres" id="10_vtaks"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_iywne"]
-shader = ExtResource("2_iywne")
-shader_parameter/shader_time = 0.0
-shader_parameter/aspect = 2.087
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6ygxs"]
 
@@ -83,12 +77,11 @@ color = Color(0.098, 0.098, 0.098, 1)
 
 [node name="Fireflies" type="ColorRect" parent="." unique_id=1378642603]
 z_index = -1
-material = SubResource("ShaderMaterial_iywne")
 offset_left = -144.0
 offset_top = -170.0
 offset_right = 144.0
 offset_bottom = -24.0
-color = Color(1, 1, 1, 0)
+color = Color(0.09803922, 0.09803922, 0.09803922, 1)
 script = ExtResource("3_p57ef")
 
 [node name="Player" parent="." unique_id=129299254 instance=ExtResource("1_uwrxv")]
