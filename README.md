@@ -1,7 +1,5 @@
 # Dodge The Spikes
 
-<img src='readme-assets/gif.gif' width=500>
-
 A reflex game where your only goal is to not die, made for Hack Club's Stardance!
 
 Spikes fly at you from both sides of the screen. Jump over them. Don't get hit. 
