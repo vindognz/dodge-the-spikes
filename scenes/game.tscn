@@ -48,39 +48,6 @@ offset_top = -24.0
 offset_right = 144.0
 color = Color(0.08468992, 0.08468992, 0.08468992, 1)
 
-[node name="zones" type="ColorRect" parent="." unique_id=788556348]
-z_index = -1
-offset_left = -144.0
-offset_top = 12.0
-offset_right = -48.0
-offset_bottom = 36.0
-color = Color(0.08468992, 0.08468992, 0.08468992, 1)
-
-[node name="zones3" type="ColorRect" parent="." unique_id=544029512]
-z_index = -1
-offset_left = 48.0
-offset_top = 12.0
-offset_right = 144.0
-offset_bottom = 36.0
-color = Color(0.08468992, 0.08468992, 0.08468992, 1)
-
-[node name="zones2" type="ColorRect" parent="." unique_id=1203385455]
-z_index = -1
-offset_left = -48.0
-offset_top = 12.0
-offset_right = 48.0
-offset_bottom = 36.0
-color = Color(0.65834004, 0.6583399, 0.6583399, 1)
-
-[node name="big bg rect" type="ColorRect" parent="." unique_id=628151695]
-visible = false
-z_index = -1
-offset_left = -144.0
-offset_top = -162.0
-offset_right = 144.0
-offset_bottom = -24.0
-color = Color(0.098, 0.098, 0.098, 1)
-
 [node name="Fireflies" type="ColorRect" parent="." unique_id=1378642603]
 z_index = -1
 material = SubResource("ShaderMaterial_iywne")
@@ -365,4 +332,5 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [connection signal="pressed" from="CanvasLayer/GameOverScreen/Leaderboard/PlayAgainButton" to="." method="_on_play_again_button_pressed"]
+[connection signal="text_submitted" from="CanvasLayer/GameOverScreen/NamePrompt/NameInput" to="." method="_on_name_submitted"]
 [connection signal="pressed" from="CanvasLayer/GameOverScreen/NamePrompt/ConfirmNameButton" to="." method="_on_confirm_name_button_pressed"]

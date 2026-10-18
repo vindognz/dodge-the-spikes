@@ -100,6 +100,3 @@ func pick_cols(count: int) -> Array:
 			picks.append(pool[randi() % pool.size()])
 			
 	return picks
-			
-			
-			

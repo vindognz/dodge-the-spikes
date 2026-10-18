@@ -7,7 +7,6 @@ extends Control
 var loading_timer: float = 0.0
 var loading_dots: int = 0
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	scroll.visible = false
 	loading_label.visible = true

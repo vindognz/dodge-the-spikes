@@ -11,7 +11,6 @@ func shake(intensity: float, duration: float, horizonal: bool = false) -> void:
 	shake_timer = duration
 	shake_horizontal = horizonal
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if shake_timer > 0:
 		shake_timer -= delta

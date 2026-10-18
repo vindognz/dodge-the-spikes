@@ -11,13 +11,11 @@ extends Node2D
 var game_over_triggered: bool = false
 var can_restart: bool = false
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	game_over_screen.visible = false
 	leaderboard.visible = false
 	name_prompt.visible = false
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	if not Global.running:
 		if not game_over_triggered:
@@ -34,6 +32,7 @@ func on_game_over() -> void:
 	
 	if Global.current_player_name == "":
 		name_prompt.visible = true
+		name_input.grab_focus()
 		leaderboard.visible = false
 	else:
 		name_prompt.visible = false
@@ -50,6 +49,9 @@ func _on_play_again_button_pressed() -> void:
 	if can_restart:
 		Global.reset()
 		get_tree().reload_current_scene()
+
+func _on_name_submitted(_text: String) -> void:
+	_on_confirm_name_button_pressed()
 
 func _on_confirm_name_button_pressed() -> void:
 	var name_text = name_input.text.strip_edges()

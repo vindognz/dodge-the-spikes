@@ -4,7 +4,6 @@ var velocity: Vector2 = Vector2.ZERO
 var lifetime: float = 0.5
 var timer: float = 0.0
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	timer += delta
 	velocity *= 0.95 # drag / air resistance idk bro

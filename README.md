@@ -1,6 +1,6 @@
 # Dodge The Spikes
 
-<img src='readme-assets/gameplay.gif' width=500>
+<img src='readme-assets/gameplay.gif' alt='Gameplay clip' width=500>
 
 A reflex game where your only goal is to not die, made for Hack Club's Stardance!
 
@@ -13,11 +13,11 @@ Spikes fly at you from both sides of the screen. Jump over them. Don't get hit.
 - **Move**: Arrow keys or WASD
 - **Jump**: Space / W / Up arrow (you can hold to bounce)
 - **Mute**: M
-- Every 10 spikes is a new level, and every level is faster
 
 ## Features
 - Danger zones: stand clear before they kill everything within!
-- Levels: these control the speed, spawn rate, and danger zones
+- Levels: Every 10 spikes is a new level, and every level is faster
+	- These control the speed, spawn rate, and danger zones
 - A 'jelly' player that stretches, splats and shatters on spikes
 - Firefly background, written as a shader
 - Global leaderboard (shows best score per player)
