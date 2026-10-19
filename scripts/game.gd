@@ -56,7 +56,7 @@ func _on_name_submitted(_text: String) -> void:
 func _on_confirm_name_button_pressed() -> void:
 	var name_text = name_input.text.strip_edges()
 	if name_text == "":
-		name_text = "Anonymous"
+		name_text = "Anonymous #" + str(randi_range(1000, 9999))
 	
 	Global.current_player_name = name_text
 	name_prompt.visible = false
