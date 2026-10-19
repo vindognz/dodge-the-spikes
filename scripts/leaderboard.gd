@@ -35,7 +35,7 @@ func populate(entries: Array) -> void:
 		var row_color = Color(1.0, 0.84, 0.0) if entry["name"] == Global.current_player_name else Color.WHITE
 		
 		var rank_label = Label.new()
-		rank_label.text = str(i + 1) + "."
+		rank_label.text = str(i + 1) + ". "
 		rank_label.add_theme_font_size_override("font_size", 24)
 		rank_label.add_theme_color_override("font_color", row_color)
 		rank_label.add_theme_constant_override("outline_size", 8)
